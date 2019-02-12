@@ -1,4 +1,4 @@
-import { basename } from '../../src/util';
+import { basename } from 'core/lib/util';
 
 const fPath = './path1/path2/file1.md';
 

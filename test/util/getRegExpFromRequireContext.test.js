@@ -1,4 +1,4 @@
-import { getRegExpFromRequireContext } from '../../src/util';
+import { getRegExpFromRequireContext } from 'core/lib/util';
 
 test('require.context id not exist', () => {
   const result = getRegExpFromRequireContext({});
