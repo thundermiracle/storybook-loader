@@ -47,5 +47,8 @@
     "react-dom": "^16.7.0",
     "regenerator-runtime": "^0.13.1",
     "storybook-readme": "^4.0.5"
+  },
+  "jest": {
+    "transform": {}
   }
 }

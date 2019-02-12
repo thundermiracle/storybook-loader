@@ -29,7 +29,7 @@ function basename(filePath, regExp = null) {
  * @param p the path to evaluate
  */
 function foldername(filePath) {
-  return path.dirname(filePath).replace(/^.\//, '');
+  return path.dirname(filePath).replace(/^.?\//, '');
 }
 
 function getRegExpStrFromRequireContext(req) {
@@ -39,7 +39,7 @@ function getRegExpStrFromRequireContext(req) {
   }
 
   const regExpStr = id.split(' ').pop();
-  if (regExpStr == null || regExpStr === '') {
+  if (regExpStr === '') {
     return null;
   }
 
@@ -54,7 +54,7 @@ function getRegExpStrFromRequireContext(req) {
 function getRegExpFromRequireContext(req) {
   const regExpStr = getRegExpStrFromRequireContext(req);
 
-  return regExpStr || new RegExp(regExpStr);
+  return regExpStr != null ? new RegExp(regExpStr) : null;
 }
 
 /**
