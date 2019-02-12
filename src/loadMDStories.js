@@ -1,5 +1,5 @@
-import mdLoader from './mdLoader';
-import loadStories from './loadStories';
+import loadStories from './core/loadStories';
+import mdLoader from './plugin/mdLoader';
 
 function loadMDStories(reqList = [], userOptions = {}) {
   loadStories(mdLoader, reqList, userOptions);

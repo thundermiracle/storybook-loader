@@ -4,6 +4,8 @@ import {
 } from 'ramda';
 import log from 'loglevel';
 
+const allExtRegExp = /\.[0-9a-z]+$/i;
+
 /**
  * Return the basename of the file
  *
@@ -70,9 +72,9 @@ function isRequireContextRegExpPassed(req) {
  * @param {*string} filePath
  * @param {*RegExp} regExp
  */
-function isRightExt(filePath, regExp) {
-  const extName = path.extname(filePath);
-  return regExp.test(extName);
+function isFileNameCorrect(filePath, includeRegExp, excludeRegExp = null) {
+  const fileName = path.basename(filePath);
+  return (includeRegExp || allExtRegExp).test(fileName) && (excludeRegExp == null ? true : !excludeRegExp.test(fileName));
 }
 
 /**
@@ -160,13 +162,29 @@ function applyFuncList(component, funcList = []) {
     return component;
   }
 
-  const composedFuncs = composePureFuncSkipFirstParam(funcList);
+  const composedFuncs = pipe(...funcList);
 
   return composedFuncs(component);
 }
 
+/**
+ * Return new function with setting all params from second place.
+ * @example (function myName(name, msg1, msg2) {}, params=['hello', 'world'])  =>
+ *   myName(name, 'hello', 'world');
+ *
+ * @param func
+ * @param params parameter array
+ */
+function unaryFunc(func, params = []) {
+  if (params == null || params.length === 0) {
+    return func;
+  }
+
+  return curry(func)(__, ...params);
+}
+
 export {
-  basename, foldername, getRegExpFromRequireContext, isRightExt,
+  basename, foldername, getRegExpFromRequireContext, isFileNameCorrect,
   applySubFuncs, isRequireContextRegExpPassed, flattenContentObj,
-  getComponent, applyFuncList,
+  getComponent, applyFuncList, unaryFunc, composePureFuncSkipFirstParam,
 };
