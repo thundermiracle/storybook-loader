@@ -13,6 +13,19 @@
         "regenerator": true,
       },
     ],
+    [
+      "module-resolver",
+      {
+        "root": [
+          "./src"
+        ],
+        "alias": {
+          "src": "./src",
+          "core": "./src/core",
+          "plugin": "./src/plugin"
+        }
+      }
+    ]
   ],
   "ignore": ["node_modules/**"]
 }

@@ -1,4 +1,4 @@
-import { foldername } from '../../src/util';
+import { foldername } from 'core/lib/util';
 
 test('. folder', () => {
   const result = foldername('.');
