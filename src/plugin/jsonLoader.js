@@ -1,7 +1,7 @@
-import loader from './loader';
+import loader from '../core/loader';
 
 const defaultOptions = {
-  noExtRegExp: /\.json$/i,
+  includeRegExp: /\.json$/i,
   forceFilterExt: true,
 };
 

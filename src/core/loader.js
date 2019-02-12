@@ -1,18 +1,19 @@
 import * as R from 'ramda';
 import {
-  basename, foldername, getRegExpFromRequireContext, isRightExt,
-} from './util';
+  basename, foldername, getRegExpFromRequireContext, isFileNameCorrect,
+} from './lib/util';
 
 const defaultOptions = {
   sort: true,
   sortFunc: (a, b) => a - b,
   noExt: true,
   noExtRegExp: null,
+  includeRegExp: null,
+  excludeRegExp: null,
   groupByFolder: false,
   forceFilterExt: false,
+  ignoreDotFolder: true,
 };
-
-const allExtRegExp = /\.[0-9a-z]+$/i;
 
 /**
  * Return the list of file name and file content(by require) from a directory.
@@ -26,28 +27,34 @@ const allExtRegExp = /\.[0-9a-z]+$/i;
  */
 function loader(req, userOptions = {}) {
   const {
-    sort, sortFunc, noExt, noExtRegExp, groupByFolder, forceFilterExt,
+    sort, sortFunc, noExt, noExtRegExp,
+    includeRegExp, excludeRegExp: fileExcludeRegExp,
+    groupByFolder, forceFilterExt, ignoreDotFolder,
   } = {
     ...defaultOptions,
     ...userOptions,
   };
 
   // try get regexp from req
-  const extRegExp = noExtRegExp || getRegExpFromRequireContext(req) || allExtRegExp;
+  const fileIncludeRegExp = includeRegExp || getRegExpFromRequireContext(req);
 
   // use requirecontext to read contents of the file
   function fileContentReducer(baseObj, filePath) {
-    if (forceFilterExt && !isRightExt(filePath, extRegExp)) {
+    if (forceFilterExt && !isFileNameCorrect(filePath, fileIncludeRegExp, fileExcludeRegExp)) {
       // skip if extention doesn't match regexp
       return baseObj;
     }
 
-    const fileName = basename(filePath, noExt ? extRegExp : null);
+    const fileName = basename(filePath, noExt ? noExtRegExp || includeRegExp : null);
     if (!groupByFolder) {
       baseObj[fileName] = req(filePath);
     } else {
       // add folder layer
       const folderName = foldername(filePath);
+      if (ignoreDotFolder && folderName === '.') {
+        return baseObj;
+      }
+
       baseObj[folderName] = {
         ...baseObj[folderName],
         [fileName]: req(filePath),

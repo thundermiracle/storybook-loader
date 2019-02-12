@@ -1,7 +1,8 @@
-import loader from './loader';
+import loader from '../core/loader';
 
 const defaultOptions = {
-  noExtRegExp: /\.jsx?$/i,
+  includeRegExp: /\.jsx?$/i,
+  excludeRegExp: /\.stories.js$/i,
   forceFilterExt: true,
 };
 

@@ -2,22 +2,22 @@ import { storiesOf } from '@storybook/react';
 import { identity } from 'ramda';
 import {
   applySubFuncs, flattenContentObj, getComponent, applyFuncList,
-} from './util';
+} from './lib/util';
 
 const mdDefaultOptions = {
   storySubFuncList: [],
   hierarchyRoot: '',
   contentFuncList: [
-    {
-      func: identity,
-    },
+    identity,
   ],
   groupByFolder: true,
+  thirdParamMaker: null,
 };
 
-function loadStories(loader, reqList = [], userOptions = {}, isContentComponent = false) {
+function loadStories(loader, reqList = [], userOptions = {}, isContentAComponent = false) {
   const {
-    storySubFuncList, hierarchyRoot, contentFuncList, ...loaderOptions
+    storySubFuncList, hierarchyRoot, contentFuncList, thirdParamMaker,
+    ...loaderOptions
   } = {
     ...mdDefaultOptions,
     ...userOptions,
@@ -40,14 +40,19 @@ function loadStories(loader, reqList = [], userOptions = {}, isContentComponent 
 
       contentList.forEach(([fileName, fileContent]) => {
         let secondParam;
-        if (!isContentComponent) {
+        if (!isContentAComponent) {
           secondParam = applyFuncList(fileContent, contentFuncList);
         } else {
           const Component = applyFuncList(getComponent(fileContent), contentFuncList);
           // eslint-disable-next-line react/display-name
           secondParam = () => <Component />;
         }
-        stories.add(fileName, secondParam);
+
+        let thirdParam;
+        if (thirdParamMaker) {
+          thirdParam = thirdParamMaker(req, fileName);
+        }
+        stories.add(fileName, secondParam, thirdParam);
       });
     });
   });
