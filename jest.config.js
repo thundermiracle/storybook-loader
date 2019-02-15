@@ -1,4 +1,4 @@
 module.exports = {
   collectCoverage: true,
-  transformIgnorePatterns: ['"/node_modules/(?!ramda).+\\.js$"', 'dist'],
+  transformIgnorePatterns: ['/node_modules/(?!ramda).+\\.js$', 'dist'],
 };
