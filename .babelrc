@@ -1,18 +1,11 @@
 {
   "presets": [
-    "@babel/env"
+    "@babel/env",
+    "@babel/react",
   ],
   "plugins": [
-    "add-module-exports",
     "@babel/plugin-proposal-class-properties",
     "@babel/plugin-proposal-object-rest-spread",
-    [
-      "@babel/plugin-transform-runtime",
-      {
-        "helpers": false,
-        "regenerator": true,
-      },
-    ],
     [
       "module-resolver",
       {
@@ -27,5 +20,12 @@
       }
     ]
   ],
+  "env": {
+    "production": {
+      "plugins": [
+         "add-module-exports",
+      ],
+    }
+  },
   "ignore": ["node_modules/**"]
 }
