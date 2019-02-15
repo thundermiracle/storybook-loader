@@ -8,7 +8,7 @@ const LogLevel = {
   debug: 4,
 };
 
-function loggerFunctionMaker(logLevel = LogLevel.warn) {
+function loggerFunctionMaker(logLevel) {
   return function (type) {
     return function (...params) {
       if (logLevel >= LogLevel[type]) {
@@ -32,9 +32,9 @@ function CustomLogger(logLevel) {
   }, {});
 }
 
-let level = LogLevel.debug;
-if (process.env.NODE_ENV === 'production') {
-  level = LogLevel.error;
+let level = LogLevel[process.env.LOG_LEVEL];
+if (level == null) {
+  level = process.env.NODE_ENV === 'production' ? LogLevel.error : LogLevel.debug;
 }
 
 const log = new CustomLogger(level);
