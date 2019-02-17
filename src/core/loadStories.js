@@ -38,7 +38,7 @@ function loadStories(loader, requireContext, userOptions = {}, isContentACompone
       // apply option functions of storybook
       applySubFuncs(stories, storySubFuncList);
 
-      contentList.forEach(([fileName, fileContent]) => {
+      contentList.forEach(([filePath, [fileName, fileContent]]) => {
         let secondParam;
         if (!isContentAComponent) {
           secondParam = applyFuncList(fileContent, contentFuncList);
@@ -50,7 +50,7 @@ function loadStories(loader, requireContext, userOptions = {}, isContentACompone
 
         let thirdParam;
         if (thirdParamMaker) {
-          thirdParam = thirdParamMaker(req, fileName);
+          thirdParam = thirdParamMaker(req, filePath);
         }
         stories.add(fileName, secondParam, thirdParam);
       });

@@ -17,10 +17,10 @@ const defaultOptions = {
 
 /**
  * Return the list of file name and file content(by require) from a directory.
- * Content can be a string if you load *.json, *.md, and can be object or function if you load *.js, *.jsx
- * @example { NameOfMyComponent:  SrcOfMyComponent }
- * @example { folder1: { NameOfComponent1:  SrcOfComponent1, NameOfComponent2: SrcOfComponent2 },
- * folder2: { Component3: SrcOfComponent3} }
+ * Content can be a string if you load *.json, *.md, or can be an object or function if you load *.js, *.jsx
+ * @example return { path(without extention):  [NameOfMyComponent, SrcOfMyComponent }
+ * @example { folder1: { path1: [NameOfComponent1, SrcOfComponent1], path2: [NameOfComponent2, SrcOfComponent2] },
+ * folder2: { path3: [FileNameComponent3, SrcOfComponent3]} }
  *
  * @param {*require.context} req webpack's require.context
  * @param {*object} userOptions optionally,
@@ -46,18 +46,20 @@ function loader(req, userOptions = {}) {
     }
 
     const fileName = basename(filePath, noExt ? noExtRegExp || includeRegExp : null);
+    const folderName = foldername(filePath);
+    const key = `${folderName}/${fileName}`;
+
     if (!groupByFolder) {
-      baseObj[fileName] = req(filePath);
+      baseObj[key] = [fileName, req(filePath)];
     } else {
       // add folder layer
-      const folderName = foldername(filePath);
       if (ignoreDotFolder && folderName === '.') {
         return baseObj;
       }
 
       baseObj[folderName] = {
         ...baseObj[folderName],
-        [fileName]: req(filePath),
+        [key]: [fileName, req(filePath)],
       };
     }
     return baseObj;

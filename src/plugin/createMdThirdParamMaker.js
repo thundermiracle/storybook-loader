@@ -17,14 +17,14 @@ function createMdThirdParamMaker(userOptions = {}) {
   const { loader, formatter } = { ...defaultThirdParamOptions, ...userOptions };
   const reqCache = {};
 
-  function thirdParamMaker(req, fileName) {
+  function thirdParamMaker(req, filePath) {
     // get from cache
     const key = req.id;
     if (!reqCache[key]) {
       reqCache[key] = loader(req, { groupByFolder: false });
     }
 
-    const content = reqCache[key][fileName] || ' ';
+    const content = reqCache[key][filePath] || ' ';
 
     return formatter(content);
   }
