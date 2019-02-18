@@ -20,3 +20,10 @@ test('normal folder without .', () => {
 
   expect(result).toEqual(expected);
 });
+
+test('root folder with .', () => {
+  const result = foldername('./file1.md');
+  const expected = '.';
+
+  expect(result).toEqual(expected);
+});
