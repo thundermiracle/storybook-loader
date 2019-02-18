@@ -50,3 +50,10 @@ test('includeRegexp, excludeRegexp-- include wrong', () => {
 
   expect(result).toEqual(expected);
 });
+
+test('return file without extentions', () => {
+  const result = isFileNameCorrect('./path1/sub1/file');
+  const expected = true;
+
+  expect(result).toEqual(expected);
+});
