@@ -24,7 +24,7 @@ function createMdThirdParamMaker(userOptions = {}) {
       reqCache[key] = loader(req, { groupByFolder: false });
     }
 
-    const content = reqCache[key][filePath] || ' ';
+    const [, content] = reqCache[key][filePath] || ['', ' '];
 
     return formatter(content);
   }
