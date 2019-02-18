@@ -1,10 +1,10 @@
 import { getComponent } from 'core/lib/util';
 
-import IMPExportDefaultFunction from './functionsMock/ExportDefaultFunction';
-import IMPModuleExportFunction from './functionsMock/ModuleExportFunction';
+import IMPExportDefaultFunction from './mocks/ExportDefaultFunction';
+import IMPModuleExportFunction from './mocks/ModuleExportFunction';
 
-const REQExportDefaultFunction = require('./functionsMock/ExportDefaultFunction');
-const REQModuleExportFunction = require('./functionsMock/ModuleExportFunction');
+const REQExportDefaultFunction = require('./mocks/ExportDefaultFunction');
+const REQModuleExportFunction = require('./mocks/ModuleExportFunction');
 
 test('import-- export default function', () => {
   const func = getComponent(IMPExportDefaultFunction);

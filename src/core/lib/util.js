@@ -6,7 +6,8 @@ import {
 
 import log from './logger';
 
-const allExtRegExp = /\.[0-9a-z]+$/i;
+// const allExtRegExp = /\.[0-9a-z]+$/i;
+const allExtRegExp = /(.*?)/;
 
 /**
  * Return the basename of the file
