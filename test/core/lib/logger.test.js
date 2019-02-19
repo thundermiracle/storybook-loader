@@ -6,7 +6,7 @@ const logFuncs = [
 ];
 
 logFuncs.forEach((funcName) => {
-  jest.spyOn(console, funcName);
+  jest.spyOn(console, funcName).mockImplementation(() => {});
 });
 
 beforeEach(() => {

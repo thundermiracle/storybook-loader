@@ -15,7 +15,8 @@
         "alias": {
           "src": "./src",
           "core": "./src/core",
-          "plugin": "./src/plugin"
+          "plugin": "./src/plugin",
+          "test": "./test"
         }
       }
     ]

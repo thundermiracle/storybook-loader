@@ -1,6 +1,6 @@
 import loader from 'core/loader';
 
-import { reqWithNoRegexp, reqWithRegExp, reqWithRootFolder } from '../mocks/reqMock';
+import { reqWithNoRegexp, reqWithRegExp, reqWithRootFolder } from 'test/mocks/reqMock';
 
 function checkObjWithKeysOrderSentitive(result, expectedResult, objectIsSame = true, keysOrderIsSame = true) {
   const baseObjectExpector = objectIsSame ? expect(result) : expect(result).not;

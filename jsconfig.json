@@ -1,16 +1,19 @@
 {
   "compilerOptions": {
     "experimentalDecorators": true,
-    "baseUrl": "./src",
+    "baseUrl": "./",
     "paths": {
       "src/*": [
-        "./*"
+        "./src/*"
       ],
       "core/*": [
-        "./core/*"
+        "./src/core/*"
       ],
       "plugin/*": [
-        "./plugin/*"
+        "./src/plugin/*"
+      ],
+      "test/*": [
+        "./test/*"
       ]
     }
   },
