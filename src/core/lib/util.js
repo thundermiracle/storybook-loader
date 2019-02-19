@@ -209,8 +209,13 @@ function toList(elem) {
   return [elem];
 }
 
+function toReact(Component) {
+  const toReactFunc = props => <Component {...props} />;
+  return toReactFunc;
+}
+
 export {
   basename, foldername, getRegExpFromRequireContext, isFileNameCorrect,
   applySubFuncs, isRequireContextRegExpPassed, flattenContentObj,
-  getComponent, applyFuncList, unaryFunc, toList,
+  getComponent, applyFuncList, unaryFunc, toList, toReact,
 };
