@@ -1,7 +1,7 @@
 import { storiesOf } from '@storybook/react';
 import { identity } from 'ramda';
 import {
-  applySubFuncs, flattenContentObj, getComponent, applyFuncList, toList,
+  applySubFuncs, flattenContentObj, getComponent, applyFuncList, toList, toReact,
 } from './lib/util';
 
 const mdDefaultOptions = {
@@ -44,8 +44,7 @@ function loadStories(loader, requireContext, userOptions = {}, isContentACompone
           secondParam = applyFuncList(fileContent, contentFuncList);
         } else {
           const Component = applyFuncList(getComponent(fileContent), contentFuncList);
-          // eslint-disable-next-line react/display-name
-          secondParam = () => <Component />;
+          secondParam = toReact(Component);
         }
 
         let thirdParam;
