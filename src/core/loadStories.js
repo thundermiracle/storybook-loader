@@ -6,17 +6,19 @@ import {
 
 const mdDefaultOptions = {
   storySubFuncList: [],
-  hierarchyRoot: '',
   contentFuncList: [
     identity,
   ],
+  hierarchyRoot: '',
   groupByFolder: true,
+  folderNameWhenEmpty: 'ALL',
   thirdParamMaker: null,
 };
 
 function loadStories(loader, requireContext, userOptions = {}, isContentAComponent = false) {
   const {
-    storySubFuncList, hierarchyRoot, contentFuncList, thirdParamMaker,
+    storySubFuncList, hierarchyRoot, contentFuncList,
+    folderNameWhenEmpty, thirdParamMaker,
     ...loaderOptions
   } = {
     ...mdDefaultOptions,
@@ -33,7 +35,7 @@ function loadStories(loader, requireContext, userOptions = {}, isContentACompone
     const folderBaseContentList = flattenContentObj(contentObj, groupByFolder);
 
     folderBaseContentList.forEach(([folderName, contentList]) => {
-      const stories = storiesOf(`${hierarchyRoot}${folderName}`, module);
+      const stories = storiesOf(`${hierarchyRoot}${folderName || folderNameWhenEmpty}`, module);
 
       // apply option functions of storybook
       applySubFuncs(stories, storySubFuncList);
