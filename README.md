@@ -8,7 +8,6 @@ storybook-loader
 [![Build Status](https://travis-ci.org/thundermiracle/storybook-loader.svg)](https://travis-ci.org/thundermiracle/storybook-loader)
 [![dependencies Status](https://david-dm.org/thundermiracle/storybook-loader/status.svg)](https://david-dm.org/thundermiracle/storybook-loader)
 [![devDependencies Status](https://david-dm.org/thundermiracle/storybook-loader/dev-status.svg)](https://david-dm.org/thundermiracle/storybook-loader?type=dev)
-[![peerDependencies Status](https://david-dm.org/thundermiracle/storybook-loader/peer-status.svg)](https://david-dm.org/thundermiracle/storybook-loader?type=peer)
 
 ## Description
 
