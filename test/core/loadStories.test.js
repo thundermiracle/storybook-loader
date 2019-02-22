@@ -166,3 +166,13 @@ describe('isContentAComponent', () => {
     expect(Util.toReact).toHaveBeenCalledTimes(count);
   });
 });
+
+describe('requireContext', () => {
+  test('requireContext is array', () => {
+    loadStories(mdLoader, [reqWithRegExp]);
+
+    const count = reqWithRegExp.keys().length;
+    expect(Util.applyFuncList).toHaveBeenCalledTimes(count);
+    expect(Util.getComponent).toHaveBeenCalledTimes(0);
+  });
+});
