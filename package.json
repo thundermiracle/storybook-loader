@@ -50,6 +50,7 @@
     "jest": "^24.1.0",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
+    "react-test-renderer": "^16.8.3",
     "storybook-readme": "^4.0.5"
   }
 }
