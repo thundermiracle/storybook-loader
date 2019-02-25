@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`React component can be rendered 1`] = `
+<div>
+  First
+</div>
+`;
