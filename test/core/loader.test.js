@@ -95,10 +95,22 @@ describe('[options]excludeRegExp', () => {
     checkObjWithKeysOrderSentitive(result, expectResult);
   });
 
-  test('correct excludeRegExp', () => {
+  test('correct excludeRegExp -- exclude file', () => {
     const result = loader(reqWithNoRegexp, { includeRegExp: /\.md$/i, excludeRegExp: /file2/ });
     const expectResult = Object.keys(reqWithNoRegexp.resultMd).reduce((baseObj, key) => {
       if (!/file2/.test(key)) {
+        baseObj[key] = reqWithNoRegexp.resultMd[key];
+      }
+      return baseObj;
+    }, {});
+
+    checkObjWithKeysOrderSentitive(result, expectResult);
+  });
+
+  test('correct excludeRegExp -- exclude folder', () => {
+    const result = loader(reqWithNoRegexp, { includeRegExp: /\.md$/i, excludeRegExp: /sub1/ });
+    const expectResult = Object.keys(reqWithNoRegexp.resultMd).reduce((baseObj, key) => {
+      if (!/sub1/.test(key)) {
         baseObj[key] = reqWithNoRegexp.resultMd[key];
       }
       return baseObj;
