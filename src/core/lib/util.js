@@ -70,7 +70,7 @@ function isRequireContextRegExpPassed(req) {
 }
 
 /**
- * Return true if file's extention match RegExp
+ * Return true if file's name match RegExp
  *
  * @param {*string} filePath
  * @param {*RegExp} regExp
@@ -78,6 +78,16 @@ function isRequireContextRegExpPassed(req) {
 function isFileNameCorrect(filePath, includeRegExp, excludeRegExp = null) {
   const fileName = path.basename(filePath);
   return (includeRegExp || allExtRegExp).test(fileName) && (excludeRegExp == null ? true : !excludeRegExp.test(fileName));
+}
+
+/**
+ * Return true if file's full path(include filename) match RegExp
+ *
+ * @param {*string} filePath
+ * @param {*RegExp} regExp
+ */
+function isFilePathCorrect(filePath, includeRegExp, excludeRegExp = null) {
+  return (includeRegExp || allExtRegExp).test(filePath) && (excludeRegExp == null ? true : !excludeRegExp.test(filePath));
 }
 
 /**
@@ -216,6 +226,7 @@ function toReact(Component) {
 
 export {
   basename, foldername, getRegExpFromRequireContext, isFileNameCorrect,
-  applySubFuncs, isRequireContextRegExpPassed, flattenContentObj,
-  getComponent, applyFuncList, unaryFunc, toList, toReact,
+  isFilePathCorrect, applySubFuncs, isRequireContextRegExpPassed,
+  flattenContentObj, getComponent, applyFuncList, unaryFunc,
+  toList, toReact,
 };

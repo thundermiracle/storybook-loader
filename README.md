@@ -350,7 +350,7 @@ folder2
 #### includeRegExp
   * Default: null
 
-  * Description: regexp for include files by file name.
+  * Description: regexp for include files by file's full path.
 
   * Attention: will use includeRegExp > regExpFromRequireContext.
 
@@ -359,7 +359,7 @@ folder2
 #### excludeRegExp
   * Default: null
 
-  * Description: regexp for exclude files by file name.
+  * Description: regexp for exclude files by file's full path.
 
   * Example: /\\.stories.js$/ to exclude all *.stories.js.
      

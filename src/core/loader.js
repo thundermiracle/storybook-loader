@@ -1,7 +1,7 @@
 import * as R from 'ramda';
 import {
   basename, foldername, getRegExpFromRequireContext,
-  isFileNameCorrect, isRequireContextRegExpPassed,
+  isFilePathCorrect, isRequireContextRegExpPassed,
 } from './lib/util';
 
 const defaultOptions = {
@@ -45,7 +45,7 @@ function loader(req, userOptions = {}) {
 
   // use requirecontext to read contents of the file
   function fileContentReducer(baseObj, filePath) {
-    if (!isFileNameCorrect(filePath, fileIncludeRegExp, fileExcludeRegExp)) {
+    if (!isFilePathCorrect(filePath, fileIncludeRegExp, fileExcludeRegExp)) {
       // skip if extention doesn't match regexp
       return baseObj;
     }
