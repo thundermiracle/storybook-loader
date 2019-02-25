@@ -10,6 +10,33 @@ storybook-loader
 [![devDependencies Status](https://david-dm.org/thundermiracle/storybook-loader/dev-status.svg)](https://david-dm.org/thundermiracle/storybook-loader?type=dev)
 [![codecov](https://codecov.io/gh/thundermiracle/storybook-loader/branch/master/graph/badge.svg)](https://codecov.io/gh/thundermiracle/storybook-loader)
 
+## Table of Contents
+
+* [Description](#Description)
+* [Installation](#Installation)
+* [How to use](#How-to-use)
+  * [Steps of loading javascript component](#steps-of-loading-javascript-component)
+  * [Steps of loading markdown](#steps-of-loading-markdown)
+  * [Steps of loading javascript component with markdown](#Steps-of-loading-javascript-component-with-markdown)
+* [Instructions](#Instructions)
+  * [parameter](#parameter)
+  * [options](#options)
+    * [storySubFuncList](#storySubFuncList)
+    * [contentFuncList](#contentFuncList)
+    * [hierarchyRoot](#hierarchyRoot)
+    * [groupByFolder](#groupByFolder)
+    * [thirdParamMaker](#thirdParamMaker)
+    * [sort](#sort)
+    * [sortFunc](#sortFunc)
+    * [noExt](#noExt)
+    * [noExtRegExp](#noExtRegExp)
+    * [includeRegExp](#includeRegExp)
+    * [excludeRegExp](#excludeRegExp)
+    * [ignoreDotFolder](#ignoreDotFolder)
+  * [third parameter options](#third-parameter-options)
+    * [loader](#loader)
+    * [formatter](#formatter)
+
 ## Description
 
 storybook-loader is a package for [storybook](https://github.com/storybooks/storybook) to automatically load ALL files in a folder.
@@ -26,7 +53,9 @@ storybook-loader is available as an [npm package](https://www.npmjs.org/package/
 npm install --save--dev storybook-loader
 ```
 
-## Steps of loading javascript(Component)
+## How to use
+
+### Steps of loading javascript component
 
 1. Create xxx.stories.js under the target folder.
 
@@ -59,7 +88,7 @@ folder2
  |-pattern2
 ```
 
-## Steps of loading markdown
+### Steps of loading markdown
 
 1. Create xxx.stories.js under the target folder.
 
@@ -106,7 +135,7 @@ folder2
  |-pattern2
 ```
 
-## Steps of loading javascript with markdown
+### Steps of loading javascript component with markdown
 
 When you not only like to load js components, but also show notes in control panel.
 
@@ -159,21 +188,21 @@ folder2
 | No.   | Parameter | Required | Type | Default | Description |
 |:------|:---------:|:--------:|:----:|:--------|:------------|
 | 1 | requireContext | 〇 | object / object list |  | instance of require.context OR an object return the same architecture to require.context |
-| 2 | options | | object | ```{ groupByFolder: true, folderNameWhenEmpty: 'ALL' }``` | *see options below for more details |
-| 3 | thirdParamMakerOptions |  | object | ```{ loader: mdLoader, formatter: formatWithNotesObject }``` | *see options below for more details |
+| 2 | options | | object | ```{ groupByFolder: true, folderNameWhenEmpty: 'ALL' }``` | *see [options](#options) below for more details |
+| 3 | thirdParamMakerOptions |  | object | ```{ loader: mdLoader, formatter: formatWithNotesObject }``` | *see [options](#third-parameter-options) below for more details |
 
 ### **options**
 
-* storySubFuncList
+#### storySubFuncList
 
-    * Default: []
+   * Default: []
 
-    * Description: list of sub functions in storiesOf to call
+   * Description: list of sub functions in storiesOf to call
 
-    * Attention: parameters of sub function MUST be an array
+   * Attention: parameters of sub function MUST be an array
 
-    * Example:
-      
+   * Example:
+
           -- NO.1 --------------------------------------------------------
           storySubFuncList: [ 
             'subFunc1',
@@ -185,180 +214,205 @@ folder2
           stories.addDecorator(withNotes);
           stories.addParameters({ options: { showAddonPanel: false } });
 
-* contentFuncList
+#### contentFuncList
 
-    * Default: [ ramda.identity ] 
+  * Default: [ ramda.identity ] 
 
-    * Description: list of pure functions for decorating file's contents. It's useful when you want to apply hocs(High Order Component) or hofs(High Order Function) to your content like withMUITheme, withLayout...
+  * Description: list of pure functions for decorating file's contents. It's useful when you want to apply hocs(High Order Component) or hofs(High Order Function) to your content like withMUITheme, withLayout...
 
-    * Attention: functions will receive ONLY ONE parameter -- the contents (could be string or React.Component). If function has more than one parameters, you can use util.unaryFunc to apply the rest parameters and then pass it to contentFuncList.
+  * Attention: functions will receive ONLY ONE parameter -- the contents (could be string or React.Component). If function has more than one parameters, you can use util.unaryFunc to apply the rest parameters and then pass it to contentFuncList.
 
-    * Example:
+  * Example:
 
-          -- NO.1 --------------------------------------------------------
-          function decPrefixMsg(content, msg) {
-            return `${msg}: ${content}`;
-          }
+        -- NO.1 --------------------------------------------------------
+        function decPrefixMsg(content, msg) {
+          return `${msg}: ${content}`;
+        }
 
-          contentFuncList: [ 
-            util.unaryFunc(decPrefixMsg, ['MyMessage is']),
-          ]
-          ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
-          stories.add(fileName, decPrefixMsg(content, 'MyMessage is'));
+        contentFuncList: [ 
+          util.unaryFunc(decPrefixMsg, ['MyMessage is']),
+        ]
+        ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+        stories.add(fileName, decPrefixMsg(content, 'MyMessage is'));
 
-          -- NO.2 --------------------------------------------------------
-          contentFuncList: [ 
-            withMUITheme,
-            withLayout,
-          ]
-          ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
-          stories.add(fileName, withLayout(withMUITheme(content)));
+        -- NO.2 --------------------------------------------------------
+        contentFuncList: [ 
+          withMUITheme,
+          withLayout,
+        ]
+        ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+        stories.add(fileName, withLayout(withMUITheme(content)));
 
-* hierarchyRoot
+#### hierarchyRoot
 
-    * Default: ''
+  * Default: ''
 
-    * Description: prefix of stories' name. If you've enabled [hierarchyRootSeparator](https://github.com/storybooks/storybook/tree/next/addons/options#set-options-globally), xxx| will be the name of hierarchyRoot.
+   * Description: prefix of stories' name. If you've enabled [hierarchyRootSeparator](https://github.com/storybooks/storybook/tree/next/addons/options#set-options-globally), xxx| will be the name of hierarchyRoot.
 
-    * Example:
+   * Example:
       
-          -- NO.1 --------------------------------------------------------
-          hierarchyRoot: 'Components|'
-          ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
-          storiesOf('Components|' + folderName, module);
+         -- NO.1 --------------------------------------------------------
+         hierarchyRoot: 'Components|'
+         ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+         storiesOf('Components|' + folderName, module);
 
-* groupByFolder
+#### groupByFolder
 
-    * Default: true
+  * Default: true
 
-    * Description: use folder name as the root stories' name.
+  * Description: use folder name as the root stories' name.
 
-    * Attention: If you set groupByFolder to false, all stories will be added to ONE root named by folderNameWhenEmpty(default is ALL).
+  * Attention: If you set groupByFolder to false, all stories will be added to ONE root named by folderNameWhenEmpty(default is ALL).
 
-    * Example:
+  * Example:
       
-          -- NO.1 --------------------------------------------------------
-          groupByFolder: true
+        -- NO.1 --------------------------------------------------------
+        groupByFolder: true
 
-          /Button/Pattern1.js
-          /Button/Pattern2.js
-          /TextField/Pattern1.js
-          ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
-          Button
-            - Pattern1
-            - Pattern2
-          TextField
-            - Pattern1
-            
-          -- NO.2 --------------------------------------------------------
-          groupByFolder: false
+        /Button/Pattern1.js
+        /Button/Pattern2.js
+        /TextField/Pattern1.js
+        ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+        Button
+          - Pattern1
+          - Pattern2
+        TextField
+          - Pattern1
+          
+        -- NO.2 --------------------------------------------------------
+        groupByFolder: false
 
-          /Button/Pattern1.js
-          /Button/Pattern2.js
-          /TextField/Pattern1.js
-          ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
-          ALL
-            - Pattern1 (the second Pattern1 will be ignored)
-            - Pattern2
+        /Button/Pattern1.js
+        /Button/Pattern2.js
+        /TextField/Pattern1.js
+        ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+        ALL
+          - Pattern1 (the second Pattern1 will be ignored)
+          - Pattern2
 
-* thirdParamMaker
+#### thirdParamMaker
 
-    * Default: null
+  * Default: null
 
-    * Description: function to make 3rd parameter of stories.add(xx, xx, 3rdParam). 
+  * Description: function to make 3rd parameter of stories.add(xx, xx, 3rdParam). 
     thirdParamMaker(instance of require.context, filePath).
 
-    * Attention: this function is called after every single file is loaded.
+  * Attention: this function is called after every single file is loaded.
 
-    * Example: [createMdThirdParamMaker](/src/plugin/createMdThirdParamMaker.js)
+  * Example: [createMdThirdParamMaker](/src/plugin/createMdThirdParamMaker.js)
 
-* sort
+#### sort
 
-    * Default: true
+  * Default: true
 
-    * Description: sort files by filename.
+  * Description: sort files by filename.
 
-* sortFunc
+#### sortFunc
 
-    * Default: (a, b) => a.localeCompare(b)
+  * Default: (a, b) => a.localeCompare(b)
 
-    * Description: sort function. sort by files asc as default.
+  * Description: sort function. sort by files asc as default.
 
-* noExt
+#### noExt
 
-    * Default: true
+  * Default: true
 
-    * Description: display filename in menu without extention.
+  * Description: display filename in menu without extention.
 
-    * Example:
+  * Example:
       
-          -- NO.1 --------------------------------------------------------
-          noExt: true
+        -- NO.1 --------------------------------------------------------
+        noExt: true
 
-          /Button/Pattern1.js
-          ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
-          Button
-            - Pattern1
-            
-          -- NO.2 --------------------------------------------------------
-          noExt: false
+        /Button/Pattern1.js
+        ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+        Button
+          - Pattern1
+          
+        -- NO.2 --------------------------------------------------------
+        noExt: false
 
-          /Button/Pattern1.js
-          ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
-          Button
-            - Pattern1.js
+        /Button/Pattern1.js
+        ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+        Button
+          - Pattern1.js
 
-* noExtRegExp
+#### noExtRegExp
 
-    * Default: null
+  * Default: null
 
-    * Description: remove extention regexp.
+  * Description: remove extention regexp.
 
-    * Attention: if noExt is true, will use noExtRegExp > includeRegExp > regExpFromRequireContext.
+  * Attention: if noExt is true, will use noExtRegExp > includeRegExp > regExpFromRequireContext.
 
-    * Example: /\\.md$/ to remove markdown's extention
+  * Example: /\\.md$/ to remove markdown's extention
 
-* includeRegExp
-    * Default: null
+#### includeRegExp
+  * Default: null
 
-    * Description: regexp for include files by file name.
+  * Description: regexp for include files by file name.
 
-    * Attention: will use includeRegExp > regExpFromRequireContext.
+  * Attention: will use includeRegExp > regExpFromRequireContext.
 
-    * Example: /\\.md$/ to add *.md files only.
+  * Example: /\\.md$/ to add *.md files only.
     
-* excludeRegExp
-    * Default: null
+#### excludeRegExp
+  * Default: null
 
-    * Description: regexp for exclude files by file name.
+  * Description: regexp for exclude files by file name.
 
-    * Example: /\\.stories.js$/ to exclude all *.stories.js.
+  * Example: /\\.stories.js$/ to exclude all *.stories.js.
      
-* ignoreDotFolder
-    * Default: true
+#### ignoreDotFolder
+  * Default: true
 
-    * Description: ignore files under root folder (. folder)
+  * Description: ignore files under root folder (. folder)
 
-    * Example: 
-          -- NO.1 --------------------------------------------------------
-          ignoreDotFolder: true
+  * Example: 
+        -- NO.1 --------------------------------------------------------
+        ignoreDotFolder: true
 
-          ./Pattern1.js
-          /Button/Pattern1.js
-          ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
-          Button
-            - Pattern1
-    
-          -- NO.2 --------------------------------------------------------
-          ignoreDotFolder: false
+        ./Pattern1.js
+        /Button/Pattern1.js
+        ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+        Button
+          - Pattern1
+  
+        -- NO.2 --------------------------------------------------------
+        ignoreDotFolder: false
 
-          ./Pattern1.js
-          /Button/Pattern1.js
-          ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
-          .
-            - Pattern1
-          Button
-            - Pattern1
+        ./Pattern1.js
+        /Button/Pattern1.js
+        ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+        .
+          - Pattern1
+        Button
+          - Pattern1
+
+### third parameter options
+
+ONLY nessacerry when use loadJSWithNotesStories or loadJsonWithNotesStories. Both of them are using [createMdThirdParamMaker](/src/plugin/createMdThirdParamMaker.js) to make 3rd parameter in stories.add(xx, xx, 3rd param).
+
+#### loader
+  * Default: mdLoader
+
+  * Description: loader to load files for making third param
+
+#### formatter
+  * Default: formatWithNotesObject() in [createMdThirdParamMaker](/src/plugin/createMdThirdParamMaker.js)
+
+  * Description: format the content
+
+  * Example
+      ```js
+      function formatWithNotesObject(content) {
+        return {
+          notes: {
+            markdown: content,
+          },
+        };
+      }
+      ```
 
 ## License
 
