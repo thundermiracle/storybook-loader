@@ -1,9 +1,9 @@
 import loadStories from './core/loadStories';
 import jsLoader from './plugin/jsLoader';
-import createMdThirdParamMaker from './plugin/createMdThirdParamMaker';
+import createMDThirdParamMaker from './plugin/createMDThirdParamMaker';
 
 function loadJSWithNotesStories(requireContext, userOptions = {}, thirdParamMakerOptions = {}) {
-  const thirdParamMaker = createMdThirdParamMaker(thirdParamMakerOptions);
+  const thirdParamMaker = createMDThirdParamMaker(thirdParamMakerOptions);
   loadStories(jsLoader, requireContext, { ...userOptions, thirdParamMaker }, true);
 }
 
