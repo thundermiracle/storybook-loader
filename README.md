@@ -299,7 +299,7 @@ folder2
 
   * Attention: this function is called after every single file is loaded.
 
-  * Example: [createMdThirdParamMaker](/src/plugin/createMdThirdParamMaker.js)
+  * Example: [createMDThirdParamMaker](/src/plugin/createMDThirdParamMaker.js)
 
 #### sort
 
@@ -391,7 +391,7 @@ folder2
 
 ### third parameter options
 
-ONLY nessacerry when use loadJSWithNotesStories or loadJsonWithNotesStories. Both of them are using [createMdThirdParamMaker](/src/plugin/createMdThirdParamMaker.js) to make 3rd parameter in stories.add(xx, xx, 3rd param).
+ONLY nessacerry when use loadJSWithNotesStories or loadJsonWithNotesStories. Both of them are using [createMDThirdParamMaker](/src/plugin/createMDThirdParamMaker.js) to make 3rd parameter in stories.add(xx, xx, 3rd param).
 
 #### loader
   * Default: mdLoader
@@ -399,7 +399,7 @@ ONLY nessacerry when use loadJSWithNotesStories or loadJsonWithNotesStories. Bot
   * Description: loader to load files for making third param
 
 #### formatter
-  * Default: formatWithNotesObject() in [createMdThirdParamMaker](/src/plugin/createMdThirdParamMaker.js)
+  * Default: formatWithNotesObject() in [createMDThirdParamMaker](/src/plugin/createMDThirdParamMaker.js)
 
   * Description: format the content
 
