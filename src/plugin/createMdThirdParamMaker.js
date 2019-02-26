@@ -13,7 +13,7 @@ const defaultThirdParamOptions = {
   formatter: formatWithNotesObject,
 };
 
-function createMdThirdParamMaker(userOptions = {}) {
+function createMDThirdParamMaker(userOptions = {}) {
   const { loader, formatter } = { ...defaultThirdParamOptions, ...userOptions };
   const reqCache = {};
 
@@ -32,4 +32,4 @@ function createMdThirdParamMaker(userOptions = {}) {
   return thirdParamMaker;
 }
 
-export default createMdThirdParamMaker;
+export default createMDThirdParamMaker;
