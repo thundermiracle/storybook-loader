@@ -4,8 +4,13 @@ import mdLoader from 'plugin/mdLoader';
 
 import { reqWithRegExp } from 'test/mocks/reqMock';
 
+jest.mock('plugin/mdLoader', () => {
+  const { reqWithRegExp: innerreqWithRegExp } = require('test/mocks/reqMock');
+  return jest.fn(() => innerreqWithRegExp.result);
+});
+
 beforeEach(() => {
-  jest.resetAllMocks();
+  mdLoader.mockClear();
 });
 
 test('check when no options set', () => {
@@ -22,7 +27,7 @@ test('check when no options set', () => {
   }
 
   // only called once because of cache
-  // expect(mdLoader).toHaveBeenCalledTimes(1);
+  expect(mdLoader).toHaveBeenCalledTimes(1);
 });
 
 test('check file name is not exist', () => {
