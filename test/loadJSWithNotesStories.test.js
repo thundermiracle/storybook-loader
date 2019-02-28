@@ -6,10 +6,17 @@ import createMDThirdParamMaker from 'plugin/createMDThirdParamMaker';
 
 jest.mock('core/loadStories');
 jest.mock('plugin/jsLoader');
-jest.mock('plugin/createMDThirdParamMaker');
+jest.mock('plugin/createMDThirdParamMaker', () => jest.fn((param) => {
+  // conditionally return
+  if (Object.keys(param).length === 0) return undefined;
+  return 'third parameter';
+}));
+
 
 beforeEach(() => {
-  jest.resetAllMocks();
+  loadStories.mockClear();
+  jsLoader.mockClear();
+  createMDThirdParamMaker.mockClear();
 });
 
 const requireContext = { keys: [] };
@@ -44,7 +51,7 @@ test('override default options', () => {
   const calledParams = loadStories.mock.calls[0];
   expect(calledParams[0]).toEqual(jsLoader);
   expect(calledParams[1]).toEqual(requireContext);
-  expect(calledParams[2]).toEqual({ ...userOptions, thirdParamMaker: undefined });
+  expect(calledParams[2]).toEqual({ ...userOptions, thirdParamMaker: 'third parameter' });
   expect(calledParams[3]).toEqual(true);
   expect(loadStories.mock.calls[0].length).toEqual(4);
 });
@@ -55,7 +62,10 @@ test('cannot set thirdParamMaker by userOptions', () => {
     excludeRegExp: /exclude/,
     thirdParamMaker: 'outterThirdParamMaker',
   };
-  loadJSWithNotesStories(requireContext, userOptions);
+  const thirdParamOptions = {
+    loader: jsLoader,
+  };
+  loadJSWithNotesStories(requireContext, userOptions, thirdParamOptions);
 
-  expect(loadStories.mock.calls[0][2]).toEqual({ ...userOptions, thirdParamMaker: undefined });
+  expect(loadStories.mock.calls[0][2]).toEqual({ ...userOptions, thirdParamMaker: 'third parameter' });
 });
