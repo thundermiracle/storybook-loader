@@ -33,6 +33,7 @@ storybook-loader
     * [includeRegExp](#includeRegExp)
     * [excludeRegExp](#excludeRegExp)
     * [ignoreDotFolder](#ignoreDotFolder)
+    * [dotFolderName](#dotFolderName)
   * [third parameter options](#third-parameter-options)
     * [loader](#loader)
     * [formatter](#formatter)
@@ -385,6 +386,24 @@ folder2
         /Button/Pattern1.js
         ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
         .
+          - Pattern1
+        Button
+          - Pattern1
+
+#### dotFolderName
+  * Default: .
+
+  * Description: used as folder name when it's a dot(.)
+
+  * Example: 
+        -- NO.1 --------------------------------------------------------
+        ignoreDotFolder: false
+        dotFolderName: 'RootFolder'
+
+        ./Pattern1.js
+        /Button/Pattern1.js
+        ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+        RootFolder
           - Pattern1
         Button
           - Pattern1
