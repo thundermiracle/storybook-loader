@@ -7,7 +7,7 @@ import { storiesOf } from '@storybook/react';
 import * as Util from 'core/lib/util';
 import mdLoader from 'src/plugin/mdLoader';
 
-import { reqWithRegExp } from 'test/mocks/reqMock';
+import { reqWithRegExp, reqWithDotFolder } from 'test/mocks/reqMock';
 
 jest.mock('@storybook/react');
 
@@ -145,6 +145,20 @@ describe('[options]thirdParamMaker', () => {
       expect(paramMakerMock).toHaveBeenCalledWith(reqWithRegExp, filePath);
       expect(addMock.mock.calls[index][2]).toEqual('thirdvalue');
     }
+  });
+});
+
+describe('[options]dotFolderName', () => {
+  test('dotFolderName is default', () => {
+    loadStories(mdLoader, reqWithDotFolder, { ignoreDotFolder: false });
+
+    expect(storiesOf.mock.calls[0][0]).toEqual('.');
+  });
+
+  test('dotFolderName is set to DotFolder', () => {
+    loadStories(mdLoader, reqWithDotFolder, { ignoreDotFolder: false, dotFolderName: 'DotFolder' });
+
+    expect(storiesOf.mock.calls[0][0]).toEqual('DotFolder');
   });
 });
 
