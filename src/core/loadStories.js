@@ -13,12 +13,13 @@ const mdDefaultOptions = {
   groupByFolder: true,
   folderNameWhenEmpty: 'ALL',
   thirdParamMaker: null,
+  dotFolderName: '.',
 };
 
 function loadStories(loader, requireContext, userOptions = {}, isContentAComponent = false) {
   const {
     storySubFuncList, hierarchyRoot, contentFuncList,
-    folderNameWhenEmpty, thirdParamMaker,
+    folderNameWhenEmpty, thirdParamMaker, dotFolderName,
     ...loaderOptions
   } = {
     ...mdDefaultOptions,
@@ -35,7 +36,14 @@ function loadStories(loader, requireContext, userOptions = {}, isContentACompone
     const folderBaseContentList = flattenContentObj(contentObj, groupByFolder);
 
     folderBaseContentList.forEach(([folderName, contentList]) => {
-      const stories = storiesOf(`${hierarchyRoot}${folderName || folderNameWhenEmpty}`, module);
+      let subFolderName = folderName;
+      if (subFolderName === '') {
+        subFolderName = folderNameWhenEmpty;
+      } else if (subFolderName === '.') {
+        subFolderName = dotFolderName;
+      }
+
+      const stories = storiesOf(`${hierarchyRoot}${subFolderName}`, module);
 
       // apply option functions of storybook
       applySubFuncs(stories, storySubFuncList);

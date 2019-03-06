@@ -124,5 +124,33 @@ const reqWithRootFolder = (function () {
 
   return context;
 }());
+const reqWithDotFolder = (function () {
+  const path1 = './mdfile1.md';
 
-export { reqWithRegExp, reqWithNoRegexp, reqWithRootFolder };
+  const contents = {
+    [path1]: 'content of mdfile1.md',
+  };
+
+  const context = (key) => {
+    return contents[key];
+  };
+
+  context.keys = () => {
+    return [path1];
+  };
+
+  context.id = './stories sync recursive \\.md$';
+
+  // #region for test
+  context.result = {
+    '.': ['mdfile1', 'content of mdfile1.md'],
+  };
+  // #endregion
+
+  return context;
+}());
+
+export {
+  reqWithRegExp, reqWithNoRegexp,
+  reqWithRootFolder, reqWithDotFolder,
+};
