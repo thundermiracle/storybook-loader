@@ -5,6 +5,5 @@ export default () => (
   <TextField
     label="Input your name"
     fullWidth
-    value="My Name"
   />
 );
