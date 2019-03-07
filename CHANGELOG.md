@@ -1,7 +1,15 @@
 ### [Versions](https://github.com/thundermiracle/storybook-loader/releases/)
 
+## 0.1.2
+###### *Mar 7, 2019*
+
+#### Changes
+
+- #8 add dotFolderName option
+- test coverage to 100%
+
 ## 0.1.1
-###### *Feb 26, 2018*
+###### *Feb 26, 2019*
 
 #### Changes
 
@@ -10,7 +18,7 @@
 - #3 avoid require all ramda
 
 ## 0.1.0
-###### *Feb 21, 2018*
+###### *Feb 21, 2019*
 
 #### Changes
 
