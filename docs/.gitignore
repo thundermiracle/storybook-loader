@@ -1,0 +1,11 @@
+# build output
+storybook-static/
+
+# dependencies
+node_modules/
+
+# test output
+
+# etc
+npm-debug.log
+yarn-error.log

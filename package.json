@@ -12,6 +12,8 @@
     "dist"
   ],
   "scripts": {
+    "docs:dev": "cd docs && npm run dev && cd ..",
+    "docs:build": "cd docs && npm run build && cd ..",
     "build:rm": "rm -rf dist/",
     "build": "npm run build:rm && cross-env NODE_ENV=production babel src --out-dir ./dist --verbose",
     "eslint": "eslint ./src && eslint ./test",

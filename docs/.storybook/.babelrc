@@ -1,0 +1,26 @@
+{
+  "presets": [
+    "@babel/env",
+    "@babel/react",
+  ],
+  "plugins": [
+    "babel-plugin-macros",
+    "@babel/plugin-syntax-async-generators",
+    "syntax-trailing-function-commas",
+    [
+      "@babel/plugin-proposal-class-properties",
+      {
+        "loose": true,
+      },
+    ],
+    "react-require",
+    "@babel/plugin-proposal-object-rest-spread",
+    [
+      "@babel/plugin-transform-runtime",
+      {
+        "helpers": false,
+        "regenerator": true,
+      },
+    ],
+  ]
+}
