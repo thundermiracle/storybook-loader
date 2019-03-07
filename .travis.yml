@@ -2,3 +2,14 @@ language: node_js
 node_js:
   - "8"
   - "10"
+
+before_deploy: 
+  - yarn docs:build
+  - echo '' > ./docs/storybook-static/.nojekyll
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: $GITHUB_GH
+  local-dir: ./docs/storybook-static
+  on:
+    branch: master
