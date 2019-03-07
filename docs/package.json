@@ -1,0 +1,45 @@
+{
+  "name": "storybook-loader-docs",
+  "version": "1.0.0",
+  "license": "MIT",
+  "scripts": {
+    "dev": "start-storybook -p 6006",
+    "build": "build-storybook"
+  },
+  "dependencies": {
+    "@material-ui/core": "^3.9.2",
+    "prop-types": "^15.7.2",
+    "react": "^16.8.3",
+    "react-dom": "^16.8.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.3.4",
+    "@babel/plugin-proposal-class-properties": "^7.3.4",
+    "@babel/plugin-proposal-decorators": "^7.3.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.3.4",
+    "@babel/plugin-syntax-async-generators": "^7.2.0",
+    "@babel/plugin-transform-runtime": "^7.3.4",
+    "@babel/preset-env": "^7.3.4",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/register": "^7.0.0",
+    "@material-ui/icons": "^3.0.2",
+    "@storybook/addon-notes": "^4.1.13",
+    "@storybook/addon-options": "^4.1.13",
+    "@storybook/addons": "^4.1.13",
+    "@storybook/react": "^4.1.13",
+    "babel-eslint": "^10.0.1",
+    "babel-loader": "^8.0.5",
+    "babel-plugin-macros": "^2.5.0",
+    "babel-plugin-module-resolver": "^3.2.0",
+    "babel-plugin-react-require": "^3.1.1",
+    "babel-plugin-syntax-trailing-function-commas": "^6.22.0",
+    "eslint": "^5.15.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-react": "^1.1.7",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-react": "^7.12.4",
+    "storybook-loader": "latest",
+    "storybook-readme": "^4.0.5"
+  }
+}
