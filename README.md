@@ -144,6 +144,7 @@ When you not only like to load js components, but also show notes in control pan
 
 ```js
 import { loadJSWithNotesStories } from 'storybook-loader';
+import { withNotes } from '@storybook/addon-notes';
 
 const req = require.context('./');
 const options = {
