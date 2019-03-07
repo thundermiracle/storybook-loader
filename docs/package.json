@@ -7,7 +7,6 @@
     "build": "build-storybook"
   },
   "dependencies": {
-    "@material-ui/core": "^3.9.2",
     "prop-types": "^15.7.2",
     "react": "^16.8.3",
     "react-dom": "^16.8.3"
@@ -22,11 +21,12 @@
     "@babel/preset-env": "^7.3.4",
     "@babel/preset-react": "^7.0.0",
     "@babel/register": "^7.0.0",
+    "@material-ui/core": "^3.9.2",
     "@material-ui/icons": "^3.0.2",
-    "@storybook/addon-notes": "^4.1.13",
-    "@storybook/addon-options": "^4.1.13",
-    "@storybook/addons": "^4.1.13",
-    "@storybook/react": "^4.1.13",
+    "@storybook/addon-notes": "^5.0.0",
+    "@storybook/addon-options": "^5.0.0",
+    "@storybook/addons": "^5.0.0",
+    "@storybook/react": "^5.0.0",
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.5",
     "babel-plugin-macros": "^2.5.0",
@@ -39,7 +39,7 @@
     "eslint-plugin-import": "^2.16.0",
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-react": "^7.12.4",
-    "storybook-loader": "latest",
+    "storybook-loader": "^0.1.2",
     "storybook-readme": "^4.0.5"
   }
 }
