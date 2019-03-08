@@ -969,6 +969,16 @@
     react-lifecycles-compat "^3.0.4"
     warning "^3.0.0"
 
+"@storybook/addon-google-analytics@^5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-google-analytics/-/addon-google-analytics-5.0.0.tgz#d7b13353ca1c6752158ca19950836d5cbf316a6a"
+  dependencies:
+    "@storybook/addons" "5.0.0"
+    "@storybook/core-events" "5.0.0"
+    core-js "^2.6.2"
+    global "^4.3.2"
+    react-ga "^2.5.3"
+
 "@storybook/addon-notes@^5.0.0":
   version "5.0.0"
   resolved "https://registry.yarnpkg.com/@storybook/addon-notes/-/addon-notes-5.0.0.tgz#f3e5dc02a09395f5a898e6c67ed6344fab23a17f"
@@ -5934,6 +5944,10 @@ react-focus-lock@^1.17.7:
     focus-lock "^0.5.2"
     prop-types "^15.6.2"
     react-clientside-effect "^1.2.0"
+
+react-ga@^2.5.3:
+  version "2.5.7"
+  resolved "https://registry.yarnpkg.com/react-ga/-/react-ga-2.5.7.tgz#1c80a289004bf84f84c26d46f3a6a6513081bf2e"
 
 react-helmet-async@^0.2.0:
   version "0.2.0"
