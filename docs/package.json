@@ -40,7 +40,7 @@
     "eslint-plugin-import": "^2.16.0",
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-react": "^7.12.4",
-    "storybook-loader": "^0.1.2",
+    "storybook-loader": "file:../dist",
     "storybook-readme": "^4.0.5"
   }
 }
