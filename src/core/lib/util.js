@@ -37,7 +37,7 @@ function foldername(filePath) {
 
 function getRegExpStrFromRequireContext(req) {
   const id = req.id;
-  if (id == null) {
+  if (id == null || typeof id !== 'string') {
     return null;
   }
 
@@ -66,7 +66,8 @@ function getRegExpFromRequireContext(req) {
  * @param {*require.context} req webpack's require.context instance
  */
 function isRequireContextRegExpPassed(req) {
-  return getRegExpStrFromRequireContext(req) !== '^\\.\\/.*$';
+  const regExpFromReq = getRegExpStrFromRequireContext(req);
+  return regExpFromReq != null && regExpFromReq !== '^\\.\\/.*$';
 }
 
 /**
