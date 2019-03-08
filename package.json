@@ -2,10 +2,21 @@
   "name": "storybook-loader",
   "version": "0.1.2",
   "license": "MIT",
+  "homepage": "https://thundermiracle.github.io/storybook-loader",
   "repository": {
     "type": "git",
     "url": "https://github.com/thundermiracle/storybook-loader"
   },
+  "bugs": {
+    "url": "https://github.com/thundermiracle/storybook-loader/issues"
+  },
+  "keywords": [
+    "storybook",
+    "addon",
+    "storybook-loader",
+    "auto-load",
+    "automatically"
+  ],
   "author": "thundermiracle",
   "main": "dist/index.js",
   "files": [
