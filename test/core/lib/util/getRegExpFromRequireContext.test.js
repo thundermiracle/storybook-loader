@@ -24,3 +24,10 @@ test('require.context id is correct', () => {
 
   expect(result).toEqual(expected);
 });
+
+test('require.context id is number', () => {
+  const result = getRegExpFromRequireContext({ id: 529 });
+  const expected = null;
+
+  expect(result).toEqual(expected);
+});
