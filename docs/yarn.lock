@@ -5810,10 +5810,6 @@ ramda@^0.21.0:
   version "0.21.0"
   resolved "https://registry.yarnpkg.com/ramda/-/ramda-0.21.0.tgz#a001abedb3ff61077d4ff1d577d44de77e8d0a35"
 
-ramda@^0.26.1:
-  version "0.26.1"
-  resolved "https://registry.yarnpkg.com/ramda/-/ramda-0.26.1.tgz#8d41351eb8111c55353617fc3bbffad8e4d35d06"
-
 randombytes@^2.0.0, randombytes@^2.0.1, randombytes@^2.0.5:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/randombytes/-/randombytes-2.1.0.tgz#df6f84372f0270dc65cdf6291349ab7a473d4f2a"
@@ -6678,11 +6674,8 @@ statuses@~1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/statuses/-/statuses-1.4.0.tgz#bb73d446da2796106efcc1b601a253d6c46bd087"
 
-storybook-loader@^0.1.2:
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/storybook-loader/-/storybook-loader-0.1.2.tgz#d044fed1844196c48fbc0624444acdb432c8a8e8"
-  dependencies:
-    ramda "^0.26.1"
+"storybook-loader@file:../dist":
+  version "0.0.0"
 
 storybook-readme@^4.0.5:
   version "4.0.5"

@@ -12,7 +12,7 @@ const options = {
   storySubFuncList: [
     [
       'addParameters',
-      [{ options: { showAddonPanel: false } }],
+      [{ options: { showPanel: false } }],
     ],
   ],
 };

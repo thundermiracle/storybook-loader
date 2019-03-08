@@ -1,6 +1,4 @@
 import { loadJSWithNotesStories } from 'storybook-loader';
-import { withNotes } from '@storybook/addon-notes';
-import { withOptions } from '@storybook/addon-options';
 
 import HierarchyRoot from '../../util/HierarchyRoot';
 
@@ -9,17 +7,14 @@ const options = {
   hierarchyRoot: HierarchyRoot.ReactComponentWithNotes,
   storySubFuncList: [
     [
-      'addDecorator',
-      [withNotes],
-    ],
-    [
-      'addDecorator',
-      [withOptions({
-        name: 'storybook-loader-docs',
-        url: 'https://github.com/thundermiracle/storybook-loader',
-        hierarchyRootSeparator: /\|/,
-        addonPanelInRight: true,
-      })],
+      'addParameters',
+      [{ 
+        options: {
+          brandTitle: 'storybook-loader-docs',
+          brandUrl: 'https://github.com/thundermiracle/storybook-loader',
+          panelPosition: 'right',
+        }
+      }],
     ],
   ],
 };
