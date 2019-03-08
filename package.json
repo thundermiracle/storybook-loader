@@ -23,6 +23,7 @@
     "dist"
   ],
   "scripts": {
+    "docs:install": "yarn build && cd docs && yarn add -D storybook-loader@file:../dist && cd ..",
     "docs:dev": "cd docs && yarn dev && cd ..",
     "docs:build": "cd docs && yarn && yarn build && cd ..",
     "build:rm": "rm -rf dist/",

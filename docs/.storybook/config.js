@@ -1,13 +1,13 @@
-import { configure } from '@storybook/react';
+import { addParameters, configure } from '@storybook/react';
 import { addDecorator } from '@storybook/react';
-import { withOptions } from '@storybook/addon-options';
 
 // Options
-addDecorator(withOptions({
-  name: 'storybook-loader-docs',
-  url: 'https://github.com/thundermiracle/storybook-loader',
-  hierarchyRootSeparator: /\|/,
-}));
+addParameters({
+  options: {
+    brandTitle: 'storybook-loader-docs',
+    brandUrl: 'https://github.com/thundermiracle/storybook-loader',
+  }
+});
 
 // automatically import all files ending in *.stories.js
 const req = require.context('../stories', true, /.stories.js$/);

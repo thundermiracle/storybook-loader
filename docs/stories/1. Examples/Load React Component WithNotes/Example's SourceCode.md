@@ -2,15 +2,20 @@
 
 ```js
 import { loadJSWithNotesStories } from 'storybook-loader';
-import { withNotes } from '@storybook/addon-notes';
 
 const req = require.context('./');
 const options = {
   hierarchyRoot: 'Examples|Load React Component WithNotes/',
   storySubFuncList: [
     [
-      'addDecorator',
-      [withNotes],
+      'addParameters',
+      [{ 
+        options: {
+          brandTitle: 'storybook-loader-docs',
+          brandUrl: 'https://github.com/thundermiracle/storybook-loader',
+          panelPosition: 'right',
+        }
+      }],
     ],
   ],
 };

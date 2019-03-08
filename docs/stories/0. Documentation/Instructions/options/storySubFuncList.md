@@ -12,9 +12,9 @@
           storySubFuncList: [ 
             'subFunc1',
             [ 'addDecorator', [withNotes] ],
-            [ 'addParameters', [{ options: { showAddonPanel: false } }] ],
+            [ 'addParameters', [{ options: { showPanel: false } }] ],
           ]
           ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
           stories.subFunc1();
           stories.addDecorator(withNotes);
-          stories.addParameters({ options: { showAddonPanel: false } });
+          stories.addParameters({ options: { showPanel: false } });
