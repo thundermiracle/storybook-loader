@@ -64,81 +64,105 @@ npm install --save--dev storybook-loader
 
 1. Create xxx.stories.js under the target folder.
 
-```js
-import { loadJSStories } from 'storybook-loader';
+    ```js
+    import { loadJSStories } from 'storybook-loader';
 
-const req = require.context('./');
+    const req = require.context('./');
 
-loadJSStories(req);
-```
+    loadJSStories(req);
+    ```
 
 2. Create sub folder and add js files.
 
-The following structure:
-```
-./rootPattern1.js
-./folder1/pattern1.js
-./folder1/pattern2.js
-./folder2/pattern1.jsx
-./folder2/pattern2.jsx
-```
+   The following structure:
+    ```
+    ./rootPattern1.js
+    ./folder1/pattern1.js
+    ./folder1/pattern2.js
+    ./folder2/pattern1.jsx
+    ./folder2/pattern2.jsx
+    ```
 
-will display like this(rootPattern1 will be ignored):
-```
-folder1
- |-pattern1
- |-pattern2
-folder2
- |-pattern1
- |-pattern2
-```
+   will display like this(rootPattern1 will be ignored):
+    ```
+    folder1
+    |-pattern1
+    |-pattern2
+    folder2
+    |-pattern1
+    |-pattern2
+    ```
 
 ### Steps of loading markdown
 
 1. Create xxx.stories.js under the target folder.
 
-```js
-import { loadMDStories } from 'storybook-loader';
-import { doc } from 'storybook-readme';
+   storybook 4.x
+    ```js
+    import { loadMDStories } from 'storybook-loader';
+    import { doc } from 'storybook-readme';
 
-const req = require.context('./');
-const options = {
-  // decorate md's content
-  contentFuncList: [
-    doc,
-  ],
-  // [optional] hide AddOnPanel
-  storySubFuncList: [
-    [
-      'addParameters',
-      [{ options: { showAddonPanel: false } }],
-    ],
-  ],
-}
+    const req = require.context('./');
+    const options = {
+      // decorate md's content
+      contentFuncList: [
+        doc,
+      ],
+      // [optional] hide AddOnPanel
+      storySubFuncList: [
+        [
+          'addParameters',
+          [{ options: { showAddonPanel: false } }],
+        ],
+      ],
+    }
 
-loadMDStories(req, options);
-```
+    loadMDStories(req, options);
+    ```
+
+   storybook 5.x
+    ```js
+    import { loadMDStories } from 'storybook-loader';
+    import { doc } from 'storybook-readme';
+
+    const req = require.context('./');
+    const options = {
+      // decorate md's content
+      contentFuncList: [
+        doc,
+      ],
+      // [optional] hide AddOnPanel
+      storySubFuncList: [
+        [
+          'addParameters',
+          [{ options: { showPanel: false } }],
+        ],
+      ],
+    }
+
+    loadMDStories(req, options);
+    ```
 
 2. Create sub folder and add md files.
 
-The following structure:
-```
-./rootPattern1.md
-./folder1/pattern1.md
-./folder1/pattern2.md
-./folder2/pattern1.md
-./folder2/pattern2.md
-```
+   The following structure:
+    ```
+    ./rootPattern1.md
+    ./folder1/pattern1.md
+    ./folder1/pattern2.md
+    ./folder2/pattern1.md
+    ./folder2/pattern2.md
+    ```
 
-will display like this(rootPattern1 will be ignored):
-```
-folder1
- |-pattern1
- |-pattern2
-folder2
- |-pattern1
- |-pattern2
-```
+   will display like this(rootPattern1 will be ignored):
+    ```
+    folder1
+    |-pattern1
+    |-pattern2
+    folder2
+    |-pattern1
+    |-pattern2
+    ```
 
 ### Steps of loading javascript component with markdown
 
@@ -146,46 +170,56 @@ When you not only like to load js components, but also show notes in control pan
 
 1. Create xxx.stories.js under the target folder.
 
-```js
-import { loadJSWithNotesStories } from 'storybook-loader';
-import { withNotes } from '@storybook/addon-notes';
+   storybook 4.x
+    ```js
+    import { loadJSWithNotesStories } from 'storybook-loader';
+    import { withNotes } from '@storybook/addon-notes';
 
-const req = require.context('./');
-const options = {
-  // [optional] you can also addDecorator(withNotes) in config.js
-  storySubFuncList: [
-    [
-      'addDecorator',
-      [withNotes],
-    ],
-  ],
-};
+    const req = require.context('./');
+    const options = {
+      // [optional] you can also addDecorator(withNotes) in config.js
+      storySubFuncList: [
+        [
+          'addDecorator',
+          [withNotes],
+        ],
+      ],
+    };
 
-loadJSWithNotesStories(reqList, options);
-```
+    loadJSWithNotesStories(reqList, options);
+    ```
+
+    storybook 5.x
+    ```js
+    import { loadJSWithNotesStories } from 'storybook-loader';
+
+    const req = require.context('./');
+
+    loadJSWithNotesStories(reqList);
+    ```
 
 2. Create sub folder and add md files.
 
-The following structure:
-```
-./folder1/pattern1.js
-./folder1/pattern1.md
-./folder1/pattern2.js
-./folder1/pattern2.md
-./folder2/pattern1.jsx
-./folder2/pattern1.md
-./folder2/pattern2.jsx
-```
+   The following structure:
+    ```
+    ./folder1/pattern1.js
+    ./folder1/pattern1.md
+    ./folder1/pattern2.js
+    ./folder1/pattern2.md
+    ./folder2/pattern1.jsx
+    ./folder2/pattern1.md
+    ./folder2/pattern2.jsx
+    ```
 
-will display like this
-```
-folder1
- |-pattern1 (display folder1/pattern1.md in notes panel)
- |-pattern2 (display folder1/pattern2.md in notes panel)
-folder2
- |-pattern1 (display folder2/pattern1.md in notes panel)
- |-pattern2 (display nothing in notes panel)
-```
+   will display like this
+    ```
+    folder1
+    |-pattern1 (display folder1/pattern1.md in notes panel)
+    |-pattern2 (display folder1/pattern2.md in notes panel)
+    folder2
+    |-pattern1 (display folder2/pattern1.md in notes panel)
+    |-pattern2 (display nothing in notes panel)
+    ```
 
 ## Instructions
 
@@ -213,12 +247,12 @@ folder2
           storySubFuncList: [ 
             'subFunc1',
             [ 'addDecorator', [withNotes] ],
-            [ 'addParameters', [{ options: { showAddonPanel: false } }] ],
+            [ 'addParameters', [{ options: { showPanel: false } }] ],
           ]
           ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
           stories.subFunc1();
           stories.addDecorator(withNotes);
-          stories.addParameters({ options: { showAddonPanel: false } });
+          stories.addParameters({ options: { showPanel: false } });
 
 #### contentFuncList
 
