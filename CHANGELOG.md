@@ -1,5 +1,12 @@
 ### [Versions](https://github.com/thundermiracle/storybook-loader/releases/)
 
+## 0.1.3
+###### *Mar 8, 2019*
+
+#### Changes
+
+- #14 fix getRegExpStrFromRequireContext bug
+
 ## 0.1.2
 ###### *Mar 7, 2019*
 
