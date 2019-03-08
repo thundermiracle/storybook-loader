@@ -54,7 +54,7 @@ test('function not exist', () => {
   applySubFuncs(baseObj, [
     'func111',
     ['func222'],
-    ['func333', ['A', 'B']]
+    ['func333', ['A', 'B']],
   ]);
   expect(baseObj.result).toEqual('');
 });

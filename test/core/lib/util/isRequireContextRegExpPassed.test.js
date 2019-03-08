@@ -19,3 +19,13 @@ test('regexp passed to require.context', () => {
 
   expect(result).toEqual(true);
 });
+
+test('production mode id is number', () => {
+  const req = {
+    id: 529,
+  };
+
+  const result = isRequireContextRegExpPassed(req);
+
+  expect(result).toEqual(false);
+});
