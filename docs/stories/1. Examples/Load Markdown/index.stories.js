@@ -5,16 +5,9 @@ import HierarchyRoot from '../../util/HierarchyRoot';
 
 const req = require.context('./');
 const options = {
-  contentFuncList: [
-    doc,
-  ],
+  contentFuncList: [doc],
   hierarchyRoot: HierarchyRoot.Markdown,
-  storySubFuncList: [
-    [
-      'addParameters',
-      [{ options: { showPanel: false } }],
-    ],
-  ],
+  storySubFuncList: [['addParameters', [{ options: { showPanel: false } }]]],
 };
 
 loadMDStories(req, options);

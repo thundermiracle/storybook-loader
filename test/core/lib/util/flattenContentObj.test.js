@@ -17,8 +17,14 @@ test('have groupFolder', () => {
 });
 
 test('have groupFolder and nested array', () => {
-  const contentObj = { fa: { a1: ['name1', '111'], a2: ['name2', '112'] }, fb: { b1: ['name3', '222'] } };
-  const expected = [['fa', [['a1', ['name1', '111']], ['a2', ['name2', '112']]]], ['fb', [['b1', ['name3', '222']]]]];
+  const contentObj = {
+    fa: { a1: ['name1', '111'], a2: ['name2', '112'] },
+    fb: { b1: ['name3', '222'] },
+  };
+  const expected = [
+    ['fa', [['a1', ['name1', '111']], ['a2', ['name2', '112']]]],
+    ['fb', [['b1', ['name3', '222']]]],
+  ];
 
   const result = flattenContentObj(contentObj, true);
   expect(result).toEqual(expected);

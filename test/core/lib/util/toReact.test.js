@@ -12,9 +12,7 @@ test('React component can be rendered', () => {
   const divReact = require('test/mocks/DivReact').default;
   const ToReactComponent = toReact(divReact);
 
-  const component = renderer.create(
-    <ToReactComponent content="First" />,
-  );
+  const component = renderer.create(<ToReactComponent content="First" />);
 
   const tree = component.toJSON();
   expect(tree).toMatchSnapshot();

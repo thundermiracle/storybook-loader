@@ -6,12 +6,13 @@ import createMDThirdParamMaker from 'plugin/createMDThirdParamMaker';
 
 jest.mock('core/loadStories');
 jest.mock('plugin/jsLoader');
-jest.mock('plugin/createMDThirdParamMaker', () => jest.fn((param) => {
-  // conditionally return
-  if (Object.keys(param).length === 0) return undefined;
-  return 'third parameter';
-}));
-
+jest.mock('plugin/createMDThirdParamMaker', () =>
+  jest.fn(param => {
+    // conditionally return
+    if (Object.keys(param).length === 0) return undefined;
+    return 'third parameter';
+  }),
+);
 
 beforeEach(() => {
   loadStories.mockClear();
@@ -67,5 +68,8 @@ test('cannot set thirdParamMaker by userOptions', () => {
   };
   loadJSWithNotesStories(requireContext, userOptions, thirdParamOptions);
 
-  expect(loadStories.mock.calls[0][2]).toEqual({ ...userOptions, thirdParamMaker: 'third parameter' });
+  expect(loadStories.mock.calls[0][2]).toEqual({
+    ...userOptions,
+    thirdParamMaker: 'third parameter',
+  });
 });

@@ -46,7 +46,11 @@ describe('[options]storySubFuncList', () => {
 
 describe('[options]hierarchyRoot', () => {
   test('hierarchyRoot is empty', () => {
-    loadStories(mdLoader, reqWithRegExp, { hierarchyRoot: '', groupByFolder: false, folderNameWhenEmpty: '' });
+    loadStories(mdLoader, reqWithRegExp, {
+      hierarchyRoot: '',
+      groupByFolder: false,
+      folderNameWhenEmpty: '',
+    });
 
     for (let index = 0; index < reqWithRegExp.length; index++) {
       expect(storiesOf.mock.calls[index][0]).toEqual('');
@@ -54,7 +58,11 @@ describe('[options]hierarchyRoot', () => {
   });
 
   test('hierarchyRoot have value', () => {
-    loadStories(mdLoader, reqWithRegExp, { hierarchyRoot: 'category|', groupByFolder: false, folderNameWhenEmpty: '' });
+    loadStories(mdLoader, reqWithRegExp, {
+      hierarchyRoot: 'category|',
+      groupByFolder: false,
+      folderNameWhenEmpty: '',
+    });
 
     for (let index = 0; index < reqWithRegExp.length; index++) {
       expect(storiesOf.mock.calls[index][0]).toEqual('category|');
@@ -92,15 +100,23 @@ describe('[options]contentFuncList', () => {
 
 describe('[options]groupByFolder', () => {
   test('groupByFolder is true', () => {
-    loadStories(mdLoader, reqWithRegExp, { groupByFolder: true, folderNameWhenEmpty: '' });
+    loadStories(mdLoader, reqWithRegExp, {
+      groupByFolder: true,
+      folderNameWhenEmpty: '',
+    });
 
     for (let index = 0; index < reqWithRegExp.length; index++) {
-      expect(storiesOf.mock.calls[index][0]).toEqual(Util.foldername(reqWithRegExp.keys()[index]));
+      expect(storiesOf.mock.calls[index][0]).toEqual(
+        Util.foldername(reqWithRegExp.keys()[index]),
+      );
     }
   });
 
   test('groupByFolder is false', () => {
-    loadStories(mdLoader, reqWithRegExp, { groupByFolder: false, folderNameWhenEmpty: '' });
+    loadStories(mdLoader, reqWithRegExp, {
+      groupByFolder: false,
+      folderNameWhenEmpty: '',
+    });
 
     for (let index = 0; index < reqWithRegExp.length; index++) {
       expect(storiesOf.mock.calls[index][0]).toEqual('');
@@ -118,7 +134,10 @@ describe('[options]folderNameWhenEmpty', () => {
   });
 
   test('folderNameWhenEmpty is set to Root', () => {
-    loadStories(mdLoader, reqWithRegExp, { groupByFolder: false, folderNameWhenEmpty: 'Root' });
+    loadStories(mdLoader, reqWithRegExp, {
+      groupByFolder: false,
+      folderNameWhenEmpty: 'Root',
+    });
 
     for (let index = 0; index < reqWithRegExp.length; index++) {
       expect(storiesOf.mock.calls[index][0]).toEqual('Root');
@@ -156,7 +175,10 @@ describe('[options]dotFolderName', () => {
   });
 
   test('dotFolderName is set to DotFolder', () => {
-    loadStories(mdLoader, reqWithDotFolder, { ignoreDotFolder: false, dotFolderName: 'DotFolder' });
+    loadStories(mdLoader, reqWithDotFolder, {
+      ignoreDotFolder: false,
+      dotFolderName: 'DotFolder',
+    });
 
     expect(storiesOf.mock.calls[0][0]).toEqual('DotFolder');
   });

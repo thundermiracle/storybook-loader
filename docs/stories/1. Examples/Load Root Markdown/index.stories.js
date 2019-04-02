@@ -6,9 +6,7 @@ import HierarchyRoot from '../../util/HierarchyRoot';
 const req = require.context('./');
 
 const options = {
-  contentFuncList: [
-    doc,
-  ],
+  contentFuncList: [doc],
   ignoreDotFolder: false,
   dotFolderName: '',
   hierarchyRoot: HierarchyRoot.RootMarkdown,
