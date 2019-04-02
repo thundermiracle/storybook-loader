@@ -1,7 +1,7 @@
 /* eslint-disable quote-props */
 /* eslint-disable camelcase */
 // mock for require.context
-const reqWithRegExp = (function () {
+const reqWithRegExp = (function() {
   const path1 = './base/sub1/mdfile1.md';
   const path2 = './base/sub2/mdfile2.md';
 
@@ -10,7 +10,7 @@ const reqWithRegExp = (function () {
     [path2]: 'content of mdfile2.md',
   };
 
-  const context = (key) => {
+  const context = key => {
     return contents[key];
   };
 
@@ -32,9 +32,9 @@ const reqWithRegExp = (function () {
   // #endregion
 
   return context;
-}());
+})();
 
-const reqWithNoRegexp = (function () {
+const reqWithNoRegexp = (function() {
   const path1_0 = './base/sub1/mdfile1';
   const path1 = './base/sub1/mdfile1.md';
   const path2_0 = './base/sub2/mdfile2';
@@ -51,7 +51,7 @@ const reqWithNoRegexp = (function () {
     [path3]: 'content of jsfile1.js',
   };
 
-  const context = (key) => {
+  const context = key => {
     return contents[key];
   };
 
@@ -91,9 +91,9 @@ const reqWithNoRegexp = (function () {
   // #endregion
 
   return context;
-}());
+})();
 
-const reqWithRootFolder = (function () {
+const reqWithRootFolder = (function() {
   const path1 = './base/sub1/mdfile1.md';
   const path2 = './mdfile2.md';
 
@@ -102,7 +102,7 @@ const reqWithRootFolder = (function () {
     [path2]: 'content of mdfile2.md',
   };
 
-  const context = (key) => {
+  const context = key => {
     return contents[key];
   };
 
@@ -123,15 +123,15 @@ const reqWithRootFolder = (function () {
   // #endregion
 
   return context;
-}());
-const reqWithDotFolder = (function () {
+})();
+const reqWithDotFolder = (function() {
   const path1 = './mdfile1.md';
 
   const contents = {
     [path1]: 'content of mdfile1.md',
   };
 
-  const context = (key) => {
+  const context = key => {
     return contents[key];
   };
 
@@ -148,9 +148,6 @@ const reqWithDotFolder = (function () {
   // #endregion
 
   return context;
-}());
+})();
 
-export {
-  reqWithRegExp, reqWithNoRegexp,
-  reqWithRootFolder, reqWithDotFolder,
-};
+export { reqWithRegExp, reqWithNoRegexp, reqWithRootFolder, reqWithDotFolder };

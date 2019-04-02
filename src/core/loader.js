@@ -1,7 +1,10 @@
 import * as R from 'ramda';
 import {
-  basename, foldername, getRegExpFromRequireContext,
-  isFilePathCorrect, isRequireContextRegExpPassed,
+  basename,
+  foldername,
+  getRegExpFromRequireContext,
+  isFilePathCorrect,
+  isRequireContextRegExpPassed,
 } from './lib/util';
 
 const defaultOptions = {
@@ -27,9 +30,14 @@ const defaultOptions = {
  */
 function loader(req, userOptions = {}) {
   const {
-    sort, sortFunc, noExt, noExtRegExp,
-    includeRegExp, excludeRegExp: fileExcludeRegExp,
-    groupByFolder, ignoreDotFolder,
+    sort,
+    sortFunc,
+    noExt,
+    noExtRegExp,
+    includeRegExp,
+    excludeRegExp: fileExcludeRegExp,
+    groupByFolder,
+    ignoreDotFolder,
   } = {
     ...defaultOptions,
     ...userOptions,

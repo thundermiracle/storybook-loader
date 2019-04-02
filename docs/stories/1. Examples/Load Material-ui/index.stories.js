@@ -5,9 +5,7 @@ import HierarchyRoot from '../../util/HierarchyRoot';
 
 const req = require.context('./');
 const options = {
-  contentFuncList: [
-    withPaperbase,
-  ],
+  contentFuncList: [withPaperbase],
   hierarchyRoot: HierarchyRoot.MaterialUI,
   excludeRegExp: /util/,
 };

@@ -16,7 +16,9 @@ beforeEach(() => {
 test('check when no options set', () => {
   const thirdParamFunc = createMDThirdParamMaker();
 
-  const keys = reqWithRegExp.keys().map(fullPath => fullPath.replace(/^.\//, '').replace(/.md$/, ''));
+  const keys = reqWithRegExp
+    .keys()
+    .map(fullPath => fullPath.replace(/^.\//, '').replace(/.md$/, ''));
   for (let index = 0; index < keys.length; index++) {
     const result = thirdParamFunc(reqWithRegExp, keys[index]);
     expect(result).toEqual({
@@ -50,7 +52,9 @@ test('customize formatter', () => {
     },
   });
 
-  const keys = reqWithRegExp.keys().map(fullPath => fullPath.replace(/^.\//, '').replace(/.md$/, ''));
+  const keys = reqWithRegExp
+    .keys()
+    .map(fullPath => fullPath.replace(/^.\//, '').replace(/.md$/, ''));
   for (let index = 0; index < keys.length; index++) {
     const result = thirdParamFunc(reqWithRegExp, keys[index]);
     expect(result).toEqual({

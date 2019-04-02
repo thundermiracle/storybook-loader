@@ -2,17 +2,10 @@ import { loadMDStories } from 'storybook-loader';
 import { doc } from 'storybook-readme';
 
 const options = {
-  contentFuncList: [
-    doc,
-  ],
+  contentFuncList: [doc],
   ignoreDotFolder: false,
   dotFolderName: '',
-  storySubFuncList: [
-    [
-      'addParameters',
-      [{ options: { showPanel: false } }],
-    ],
-  ],
+  storySubFuncList: [['addParameters', [{ options: { showPanel: false } }]]],
 };
 
 export default function loadSourceCodeMd(req, userOptions = {}) {

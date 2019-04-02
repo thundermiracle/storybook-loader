@@ -44,25 +44,17 @@ test('mix function name', () => {
 });
 
 test('function with parameter', () => {
-  applySubFuncs(baseObj, [
-    ['func3', ['A', 'B']],
-  ]);
+  applySubFuncs(baseObj, [['func3', ['A', 'B']]]);
   expect(baseObj.result).toEqual('func3[AB]');
 });
 
 test('function not exist', () => {
-  applySubFuncs(baseObj, [
-    'func111',
-    ['func222'],
-    ['func333', ['A', 'B']],
-  ]);
+  applySubFuncs(baseObj, ['func111', ['func222'], ['func333', ['A', 'B']]]);
   expect(baseObj.result).toEqual('');
 });
 
 test('parameter is not an array', () => {
-  applySubFuncs(baseObj, [
-    ['func3', 'A', 'B'],
-  ]);
+  applySubFuncs(baseObj, [['func3', 'A', 'B']]);
   expect(baseObj.result).toEqual('');
   expect(log.error).toHaveBeenCalledTimes(1);
 });

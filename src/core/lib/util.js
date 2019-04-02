@@ -1,8 +1,6 @@
 /* eslint-disable no-unused-expressions */
 import path from 'path';
-import {
-  toPairs, __, pipe, curry,
-} from 'ramda';
+import { toPairs, __, pipe, curry } from 'ramda';
 
 import log from './logger';
 
@@ -78,7 +76,10 @@ function isRequireContextRegExpPassed(req) {
  */
 function isFileNameCorrect(filePath, includeRegExp, excludeRegExp = null) {
   const fileName = path.basename(filePath);
-  return (includeRegExp || allExtRegExp).test(fileName) && (excludeRegExp == null ? true : !excludeRegExp.test(fileName));
+  return (
+    (includeRegExp || allExtRegExp).test(fileName) &&
+    (excludeRegExp == null ? true : !excludeRegExp.test(fileName))
+  );
 }
 
 /**
@@ -88,7 +89,10 @@ function isFileNameCorrect(filePath, includeRegExp, excludeRegExp = null) {
  * @param {*RegExp} regExp
  */
 function isFilePathCorrect(filePath, includeRegExp, excludeRegExp = null) {
-  return (includeRegExp || allExtRegExp).test(filePath) && (excludeRegExp == null ? true : !excludeRegExp.test(filePath));
+  return (
+    (includeRegExp || allExtRegExp).test(filePath) &&
+    (excludeRegExp == null ? true : !excludeRegExp.test(filePath))
+  );
 }
 
 /**
@@ -100,7 +104,7 @@ function isFilePathCorrect(filePath, includeRegExp, excludeRegExp = null) {
  * @param {*object} funcObj sub function object
  */
 function applySubFuncs(baseObj, funcList = []) {
-  funcList.forEach((funcInfo) => {
+  funcList.forEach(funcInfo => {
     if (typeof funcInfo === 'string') {
       // only sub function
       baseObj[funcInfo] && baseObj[funcInfo]();
@@ -113,7 +117,9 @@ function applySubFuncs(baseObj, funcList = []) {
       }
 
       if (!Array.isArray(params)) {
-        log.error(`function [${funcName}]'s parameters in storySubFuncList MUST be an array.`);
+        log.error(
+          `function [${funcName}]'s parameters in storySubFuncList MUST be an array.`,
+        );
         return;
       }
 
@@ -134,13 +140,13 @@ function flattenContentObj(contentObj, containGroupFolder = false) {
   // flatten folder layer
   let folderBaseContentList;
   if (containGroupFolder) {
-    folderBaseContentList = toPairs(contentObj)
-      .map(([folderName, fileContentObj]) => ([folderName, toPairs(fileContentObj)]));
+    folderBaseContentList = toPairs(contentObj).map(([folderName, fileContentObj]) => [
+      folderName,
+      toPairs(fileContentObj),
+    ]);
   } else {
     // if folder layer is not exist, add a space folder
-    folderBaseContentList = [
-      ['', toPairs(contentObj)],
-    ];
+    folderBaseContentList = [['', toPairs(contentObj)]];
   }
 
   return folderBaseContentList;
@@ -226,8 +232,17 @@ function toReact(Component) {
 }
 
 export {
-  basename, foldername, getRegExpFromRequireContext, isFileNameCorrect,
-  isFilePathCorrect, applySubFuncs, isRequireContextRegExpPassed,
-  flattenContentObj, getComponent, applyFuncList, unaryFunc,
-  toList, toReact,
+  basename,
+  foldername,
+  getRegExpFromRequireContext,
+  isFileNameCorrect,
+  isFilePathCorrect,
+  applySubFuncs,
+  isRequireContextRegExpPassed,
+  flattenContentObj,
+  getComponent,
+  applyFuncList,
+  unaryFunc,
+  toList,
+  toReact,
 };
