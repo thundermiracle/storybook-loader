@@ -9,8 +9,8 @@ const LogLevel = {
 };
 
 function loggerFunctionMaker(logLevel) {
-  return function (type) {
-    return function (...params) {
+  return function(type) {
+    return function(...params) {
       if (logLevel >= LogLevel[type]) {
         logger[type](...params);
       }
@@ -19,12 +19,7 @@ function loggerFunctionMaker(logLevel) {
 }
 
 function CustomLogger(logLevel) {
-  const loggerTypes = [
-    'error',
-    'warn',
-    'info',
-    'debug',
-  ];
+  const loggerTypes = ['error', 'warn', 'info', 'debug'];
 
   return loggerTypes.reduce((funcObj, type) => {
     funcObj[type] = loggerFunctionMaker(logLevel)(type);

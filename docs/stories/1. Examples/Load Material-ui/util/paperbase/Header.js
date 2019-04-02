@@ -96,7 +96,12 @@ function Header(props) {
               </Typography>
             </Grid>
             <Grid item>
-              <Button className={classes.button} variant="outlined" color="inherit" size="small">
+              <Button
+                className={classes.button}
+                variant="outlined"
+                color="inherit"
+                size="small"
+              >
                 Web setup
               </Button>
             </Grid>

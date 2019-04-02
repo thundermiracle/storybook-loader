@@ -2,11 +2,18 @@ import loader from 'core/loader';
 
 import { reqWithNoRegexp, reqWithRegExp, reqWithRootFolder } from 'test/mocks/reqMock';
 
-function checkObjWithKeysOrderSentitive(result, expectedResult, objectIsSame = true, keysOrderIsSame = true) {
+function checkObjWithKeysOrderSentitive(
+  result,
+  expectedResult,
+  objectIsSame = true,
+  keysOrderIsSame = true,
+) {
   const baseObjectExpector = objectIsSame ? expect(result) : expect(result).not;
   baseObjectExpector.toEqual(expectedResult);
 
-  const baseKeysOrderExpector = keysOrderIsSame ? expect(Object.keys(result)) : expect(Object.keys(result)).not;
+  const baseKeysOrderExpector = keysOrderIsSame
+    ? expect(Object.keys(result))
+    : expect(Object.keys(result)).not;
   baseKeysOrderExpector.toEqual(Object.keys(expectedResult));
 }
 
@@ -34,7 +41,11 @@ describe('[options]sort, sortFunc', () => {
   });
 
   test('sort true, default sortFunc', () => {
-    const result = loader(reqWithNoRegexp, { includeRegExp: /\.md$/i, sort: false, sortFunc: (a, b) => b.localeCompare(a) });
+    const result = loader(reqWithNoRegexp, {
+      includeRegExp: /\.md$/i,
+      sort: false,
+      sortFunc: (a, b) => b.localeCompare(a),
+    });
     const expectResult = reqWithNoRegexp.resultMd;
 
     checkObjWithKeysOrderSentitive(result, expectResult);
@@ -96,7 +107,10 @@ describe('[options]excludeRegExp', () => {
   });
 
   test('correct excludeRegExp -- exclude file', () => {
-    const result = loader(reqWithNoRegexp, { includeRegExp: /\.md$/i, excludeRegExp: /file2/ });
+    const result = loader(reqWithNoRegexp, {
+      includeRegExp: /\.md$/i,
+      excludeRegExp: /file2/,
+    });
     const expectResult = Object.keys(reqWithNoRegexp.resultMd).reduce((baseObj, key) => {
       if (!/file2/.test(key)) {
         baseObj[key] = reqWithNoRegexp.resultMd[key];
@@ -108,7 +122,10 @@ describe('[options]excludeRegExp', () => {
   });
 
   test('correct excludeRegExp -- exclude folder', () => {
-    const result = loader(reqWithNoRegexp, { includeRegExp: /\.md$/i, excludeRegExp: /sub1/ });
+    const result = loader(reqWithNoRegexp, {
+      includeRegExp: /\.md$/i,
+      excludeRegExp: /sub1/,
+    });
     const expectResult = Object.keys(reqWithNoRegexp.resultMd).reduce((baseObj, key) => {
       if (!/sub1/.test(key)) {
         baseObj[key] = reqWithNoRegexp.resultMd[key];
@@ -122,14 +139,20 @@ describe('[options]excludeRegExp', () => {
 
 describe('[options]groupByFolder', () => {
   test('groupFolder is true', () => {
-    const result = loader(reqWithNoRegexp, { includeRegExp: /\.md$/i, groupByFolder: true });
+    const result = loader(reqWithNoRegexp, {
+      includeRegExp: /\.md$/i,
+      groupByFolder: true,
+    });
     const expectResult = reqWithNoRegexp.resultMdGroup;
 
     checkObjWithKeysOrderSentitive(result, expectResult);
   });
 
   test('groupFolder is false', () => {
-    const result = loader(reqWithNoRegexp, { includeRegExp: /\.md$/i, groupByFolder: false });
+    const result = loader(reqWithNoRegexp, {
+      includeRegExp: /\.md$/i,
+      groupByFolder: false,
+    });
     const expectResult = reqWithNoRegexp.resultMd;
 
     checkObjWithKeysOrderSentitive(result, expectResult);
@@ -138,14 +161,20 @@ describe('[options]groupByFolder', () => {
 
 describe('[options]ignoreDotFolder', () => {
   test('ignoreDotFolder is true', () => {
-    const result = loader(reqWithRootFolder, { includeRegExp: /\.md$/i, ignoreDotFolder: true });
+    const result = loader(reqWithRootFolder, {
+      includeRegExp: /\.md$/i,
+      ignoreDotFolder: true,
+    });
     const expectResult = reqWithRootFolder.resultIgnoreDotFolder;
 
     checkObjWithKeysOrderSentitive(result, expectResult);
   });
 
   test('ignoreDotFolder is false', () => {
-    const result = loader(reqWithRootFolder, { includeRegExp: /\.md$/i, ignoreDotFolder: false });
+    const result = loader(reqWithRootFolder, {
+      includeRegExp: /\.md$/i,
+      ignoreDotFolder: false,
+    });
     const expectResult = reqWithRootFolder.result;
 
     checkObjWithKeysOrderSentitive(result, expectResult);

@@ -4,10 +4,7 @@ function greet(name, greet1, greet2) {
   return `[${name}]: ${greet1}, ${greet2}`;
 }
 
-const greetParams = [
-  'Hello',
-  'World',
-];
+const greetParams = ['Hello', 'World'];
 
 test('parameter is null', () => {
   const result = unaryFunc(greet, null);

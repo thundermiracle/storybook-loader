@@ -8,13 +8,15 @@ const options = {
   storySubFuncList: [
     [
       'addParameters',
-      [{ 
-        options: {
-          brandTitle: 'storybook-loader-docs',
-          brandUrl: 'https://github.com/thundermiracle/storybook-loader',
-          panelPosition: 'right',
-        }
-      }],
+      [
+        {
+          options: {
+            brandTitle: 'storybook-loader-docs',
+            brandUrl: 'https://github.com/thundermiracle/storybook-loader',
+            panelPosition: 'right',
+          },
+        },
+      ],
     ],
   ],
 };
