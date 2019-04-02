@@ -179,9 +179,7 @@ class Paperbase extends React.Component {
           </nav>
           <div className={classes.appContent}>
             <Header onDrawerToggle={this.handleDrawerToggle} />
-            <main className={classes.mainContent}>
-              {children || <Content />}
-            </main>
+            <main className={classes.mainContent}>{children || <Content />}</main>
           </div>
         </div>
       </MuiThemeProvider>
@@ -196,6 +194,6 @@ Paperbase.propTypes = {
 
 Paperbase.defaultProps = {
   children: null,
-}
+};
 
 export default withStyles(styles)(Paperbase);

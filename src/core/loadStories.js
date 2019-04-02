@@ -1,14 +1,17 @@
 import { storiesOf } from '@storybook/react';
 import { identity } from 'ramda';
 import {
-  applySubFuncs, flattenContentObj, getComponent, applyFuncList, toList, toReact,
+  applySubFuncs,
+  flattenContentObj,
+  getComponent,
+  applyFuncList,
+  toList,
+  toReact,
 } from './lib/util';
 
 const mdDefaultOptions = {
   storySubFuncList: [],
-  contentFuncList: [
-    identity,
-  ],
+  contentFuncList: [identity],
   hierarchyRoot: '',
   groupByFolder: true,
   folderNameWhenEmpty: 'ALL',
@@ -16,10 +19,19 @@ const mdDefaultOptions = {
   dotFolderName: '.',
 };
 
-function loadStories(loader, requireContext, userOptions = {}, isContentAComponent = false) {
+function loadStories(
+  loader,
+  requireContext,
+  userOptions = {},
+  isContentAComponent = false,
+) {
   const {
-    storySubFuncList, hierarchyRoot, contentFuncList,
-    folderNameWhenEmpty, thirdParamMaker, dotFolderName,
+    storySubFuncList,
+    hierarchyRoot,
+    contentFuncList,
+    folderNameWhenEmpty,
+    thirdParamMaker,
+    dotFolderName,
     ...loaderOptions
   } = {
     ...mdDefaultOptions,
@@ -28,7 +40,7 @@ function loadStories(loader, requireContext, userOptions = {}, isContentACompone
 
   const { groupByFolder } = loaderOptions;
 
-  toList(requireContext).forEach((req) => {
+  toList(requireContext).forEach(req => {
     // read files' contents
     const contentObj = loader(req, loaderOptions);
 

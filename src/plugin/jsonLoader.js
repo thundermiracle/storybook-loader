@@ -5,7 +5,7 @@ const defaultOptions = {
 };
 
 function jsonLoader(req, userOptions = {}) {
-  return loader(req, {...defaultOptions, ...userOptions});
+  return loader(req, { ...defaultOptions, ...userOptions });
 }
 
 export default jsonLoader;

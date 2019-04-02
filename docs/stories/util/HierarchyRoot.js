@@ -5,5 +5,5 @@ export default (function Hierarchy() {
     ReactComponent: 'Examples|Load React Component/',
     ReactComponentWithNotes: 'Examples|Load React Component WithNotes/',
     RootMarkdown: 'Examples|Load Markdown in root/',
-  }
+  };
 })();

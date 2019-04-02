@@ -3,16 +3,9 @@ import { doc } from 'storybook-readme';
 
 const req = require.context('./');
 const options = {
-  contentFuncList: [
-    doc,
-  ],
+  contentFuncList: [doc],
   hierarchyRoot: 'Documentation|',
-  storySubFuncList: [
-    [
-      'addParameters',
-      [{ options: { showPanel: false } }],
-    ],
-  ],
-}
+  storySubFuncList: [['addParameters', [{ options: { showPanel: false } }]]],
+};
 
 loadMDStories(req, options);

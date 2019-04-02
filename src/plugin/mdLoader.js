@@ -5,7 +5,7 @@ const defaultOptions = {
 };
 
 function mdLoader(req, userOptions = {}) {
-  return loader(req, { ...defaultOptions, ...userOptions});
+  return loader(req, { ...defaultOptions, ...userOptions });
 }
 
 export default mdLoader;

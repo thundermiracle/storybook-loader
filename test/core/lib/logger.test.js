@@ -1,11 +1,6 @@
-const logFuncs = [
-  'error',
-  'warn',
-  'info',
-  'debug',
-];
+const logFuncs = ['error', 'warn', 'info', 'debug'];
 
-logFuncs.forEach((funcName) => {
+logFuncs.forEach(funcName => {
   jest.spyOn(console, funcName).mockImplementation(() => {});
 });
 
@@ -15,7 +10,7 @@ beforeEach(() => {
 });
 
 function callAllLogFuncs(logger) {
-  logFuncs.forEach((funcName) => {
+  logFuncs.forEach(funcName => {
     logger[funcName](funcName);
   });
 }
