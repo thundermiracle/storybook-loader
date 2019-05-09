@@ -4,8 +4,14 @@ const defaultOptions = {
   includeRegExp: /\.md$/i,
 };
 
-function mdLoader(req, userOptions = {}) {
-  return loader(req, { ...defaultOptions, ...userOptions });
+/**
+ * @default
+ * loaderOptions: {
+ * 　includeRegExp: /\.md$/i,
+ * }
+ */
+function mdLoader(req, loaderOptions = {}) {
+  return loader(req, { ...defaultOptions, ...loaderOptions });
 }
 
 export default mdLoader;

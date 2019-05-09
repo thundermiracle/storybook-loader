@@ -5,8 +5,15 @@ const defaultOptions = {
   excludeRegExp: /\.stories.js$/i,
 };
 
-function jsLoader(req, userOptions = {}) {
-  return loader(req, { ...defaultOptions, ...userOptions });
+/**
+ * @default
+ * loaderOptions = {
+ * 　includeRegExp: /\.jsx?$/i,
+ * 　excludeRegExp: /\.stories.js$/i,
+ * }
+ */
+function jsLoader(req, loaderOptions = {}) {
+  return loader(req, { ...defaultOptions, ...loaderOptions });
 }
 
 export default jsLoader;

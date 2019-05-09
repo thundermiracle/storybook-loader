@@ -4,8 +4,14 @@ const defaultOptions = {
   includeRegExp: /\.json$/i,
 };
 
-function jsonLoader(req, userOptions = {}) {
-  return loader(req, { ...defaultOptions, ...userOptions });
+/**
+ * @default
+ * loaderOptions: {
+ * 　includeRegExp: /\.json$/i,
+ * }
+ */
+function jsonLoader(req, loaderOptions = {}) {
+  return loader(req, { ...defaultOptions, ...loaderOptions });
 }
 
 export default jsonLoader;
