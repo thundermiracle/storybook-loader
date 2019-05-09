@@ -19,10 +19,25 @@ const mdDefaultOptions = {
   dotFolderName: '.',
 };
 
+/**
+ * @default
+ * loadStoriesOptions: {
+ * sort: true,
+ * sortFunc: (a, b) => a.localeCompare(b),
+ * noExt: true,
+ * groupByFolder: true,
+ * ignoreDotFolder: true,
+ * hierarchyRoot: '',
+ * folderNameWhenEmpty: 'ALL',
+ * dotFolderName: '.',
+ *}
+ * @default
+ * isContentAComponent: false
+ */
 function loadStories(
   loader,
   requireContext,
-  userOptions = {},
+  loadStoriesOptions = {},
   isContentAComponent = false,
 ) {
   const {
@@ -35,7 +50,7 @@ function loadStories(
     ...loaderOptions
   } = {
     ...mdDefaultOptions,
-    ...userOptions,
+    ...loadStoriesOptions,
   };
 
   const { groupByFolder } = loaderOptions;
