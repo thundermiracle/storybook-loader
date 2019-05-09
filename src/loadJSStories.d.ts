@@ -1,5 +1,4 @@
-import loadStories from './core/loadStories';
-import mdLoader from './plugin/mdLoader';
+import { loadStoriesOptions } from './core/loadStories';
 
 /**
  * @default
@@ -14,8 +13,7 @@ import mdLoader from './plugin/mdLoader';
  * dotFolderName: '.',
  *}
  */
-function loadMDStories(requireContext, loadStoriesOptions = {}) {
-  loadStories(mdLoader, requireContext, loadStoriesOptions);
-}
-
-export default loadMDStories;
+export default function loadJSStories(
+  requireContext: any,
+  loadStoriesOptions: loadStoriesOptions,
+): void;

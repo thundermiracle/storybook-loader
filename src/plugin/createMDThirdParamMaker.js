@@ -13,8 +13,15 @@ const defaultThirdParamOptions = {
   formatter: formatWithNotesObject,
 };
 
-function createMDThirdParamMaker(userOptions = {}) {
-  const { loader, formatter } = { ...defaultThirdParamOptions, ...userOptions };
+/**
+ * @default
+ * thirdParamOptions: {
+ * loader: mdLoader,
+ * formatter: formatWithNotesObject,
+ * }
+ */
+function createMDThirdParamMaker(thirdParamOptions = {}) {
+  const { loader, formatter } = { ...defaultThirdParamOptions, ...thirdParamOptions };
   const reqCache = {};
 
   function thirdParamMaker(req, filePath) {
