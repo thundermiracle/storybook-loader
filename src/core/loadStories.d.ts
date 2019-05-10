@@ -1,7 +1,7 @@
 import { loaderOptions } from './loader';
 
 interface loadStoriesExtraOptions {
-  storySubFuncList?: [] | Function[];
+  storySubFuncList?: Function[];
   contentFuncList?: Function[];
   hierarchyRoot?: string;
   groupByFolder?: boolean;
