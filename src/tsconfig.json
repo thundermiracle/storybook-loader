@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "storybook-loader": [
+        "src"
+      ],
+      "storybook-loader/*": [
+        "src/*"
+      ]
+    },
+    "module": "commonjs",
+    "target": "es5",
+    "lib": [
+      "es6"
+    ],
+    "jsx": "react",
+    "moduleResolution": "node",
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noEmit": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true
+  }
+}

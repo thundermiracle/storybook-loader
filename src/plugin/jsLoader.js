@@ -7,9 +7,9 @@ const defaultOptions = {
 
 /**
  * @default
- * loaderOptions = {
- * 　includeRegExp: /\.jsx?$/i,
- * 　excludeRegExp: /\.stories.js$/i,
+ * loaderOptions: {
+ *   includeRegExp: /\.jsx?$/i,
+ *   excludeRegExp: /\.stories.js$/i,
  * }
  */
 function jsLoader(req, loaderOptions = {}) {
