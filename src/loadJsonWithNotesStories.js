@@ -5,15 +5,15 @@ import createMDThirdParamMaker from './plugin/createMDThirdParamMaker';
 /**
  * @default
  * loadStoriesOptions: {
- * sort: true,
- * sortFunc: (a, b) => a.localeCompare(b),
- * noExt: true,
- * groupByFolder: true,
- * ignoreDotFolder: true,
- * hierarchyRoot: '',
- * folderNameWhenEmpty: 'ALL',
- * dotFolderName: '.',
- *}
+ *   sort: true,
+ *   sortFunc: (a, b) => a.localeCompare(b),
+ *   noExt: true,
+ *   groupByFolder: true,
+ *   ignoreDotFolder: true,
+ *   hierarchyRoot: '',
+ *   folderNameWhenEmpty: 'ALL',
+ *   dotFolderName: '.',
+ * }
  */
 function loadJsonWithNotesStories(
   requireContext,

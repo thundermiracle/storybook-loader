@@ -16,8 +16,8 @@ const defaultThirdParamOptions = {
 /**
  * @default
  * thirdParamOptions: {
- * loader: mdLoader,
- * formatter: formatWithNotesObject,
+ *   loader: mdLoader,
+ *   formatter: formatWithNotesObject,
  * }
  */
 function createMDThirdParamMaker(thirdParamOptions = {}) {

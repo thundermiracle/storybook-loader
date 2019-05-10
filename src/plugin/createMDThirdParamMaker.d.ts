@@ -6,8 +6,8 @@ export interface thirdParamOptions {
 /**
  * @default
  * thirdParamOptions: {
- * loader: mdLoader,
- * formatter: formatWithNotesObject,
+ *   loader: mdLoader,
+ *   formatter: formatWithNotesObject,
  * }
  */
 export default function createMDThirdParamMaker(
