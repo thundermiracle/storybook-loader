@@ -11,12 +11,12 @@ const allExtRegExp = /(.*?)/;
  * Return the basename of the file
  *
  * @param p the path to evaluate
- * @param regExp optionally, regex for remove
+ * @param regExpForRemove optionally, regex for remove
  */
-function basename(filePath, regExp = null) {
+function basename(filePath, regExpForRemove = null) {
   let fileName = path.basename(filePath);
-  if (regExp) {
-    fileName = fileName.replace(regExp, '');
+  if (regExpForRemove) {
+    fileName = fileName.replace(regExpForRemove, '');
   }
   return fileName;
 }
