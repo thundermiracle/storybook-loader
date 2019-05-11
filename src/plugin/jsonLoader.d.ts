@@ -3,10 +3,10 @@ import { loaderOptions } from '../core/loader';
 /**
  * @default
  * loaderOptions: {
- * 　includeRegExp: /\.json$/i,
+ *   includeRegExp: /\.json$/i,
  * }
  */
 export default function jsonLoader(
-  requestContext: any,
+  requireContext: any,
   loaderOptions?: loaderOptions,
 ): void;

@@ -7,7 +7,7 @@ const defaultOptions = {
 /**
  * @default
  * loaderOptions: {
- * 　includeRegExp: /\.md$/i,
+ *   includeRegExp: /\.md$/i,
  * }
  */
 function mdLoader(req, loaderOptions = {}) {
