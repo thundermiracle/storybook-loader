@@ -1,3 +1,6 @@
+/* file: src/index.d.ts */
+// TypeScript Version: 3.4
+
 import * as util from './core/lib/util';
 
 export { util };

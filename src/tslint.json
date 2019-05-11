@@ -1,0 +1,9 @@
+{
+  "defaultSeverity": "error",
+  "extends": "dtslint/dtslint.json",
+  "rules": {
+    "no-redundant-jsdoc": false,
+    "ban-types": false,
+    "semicolon": [true, "always", "ignore-bound-class-methods"]
+  }
+}

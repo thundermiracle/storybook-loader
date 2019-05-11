@@ -25,13 +25,14 @@ const defaultOptions = {
  * @example { folder1: { path1: [NameOfComponent1, SrcOfComponent1], path2: [NameOfComponent2, SrcOfComponent2] },
  * folder2: { path3: [FileNameComponent3, SrcOfComponent3]} }
  *
- * @default loaderOptions: {
- * sort: true,
- * sortFunc: (a, b) => a.localeCompare(b),
- * noExt: true,
- * groupByFolder: false,
- * ignoreDotFolder: true,
- *}
+ * @default 
+ * loaderOptions: {
+ *   sort: true,
+ *   sortFunc: (a, b) => a.localeCompare(b),
+ *   noExt: true,
+ *   groupByFolder: false,
+ *   ignoreDotFolder: true,
+ * }
  
  * @param {*require.context} req webpack's require.context
  * @param {*object} loaderOptions

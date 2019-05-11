@@ -7,7 +7,7 @@ const defaultOptions = {
 /**
  * @default
  * loaderOptions: {
- * 　includeRegExp: /\.json$/i,
+ *   includeRegExp: /\.json$/i,
  * }
  */
 function jsonLoader(req, loaderOptions = {}) {
