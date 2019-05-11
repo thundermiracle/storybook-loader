@@ -1,5 +1,12 @@
 ### [Versions](https://github.com/thundermiracle/storybook-loader/releases/)
 
+## 0.1.4
+###### *May 11, 2019*
+
+#### Changes
+
+- #21, #24 add typescript declaration
+
 ## 0.1.3
 ###### *Mar 8, 2019*
 
