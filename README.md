@@ -10,9 +10,13 @@ storybook-loader
 [![devDependencies Status](https://david-dm.org/thundermiracle/storybook-loader/dev-status.svg)](https://david-dm.org/thundermiracle/storybook-loader?type=dev)
 [![codecov](https://codecov.io/gh/thundermiracle/storybook-loader/branch/master/graph/badge.svg)](https://codecov.io/gh/thundermiracle/storybook-loader)
 
-## Description in medium
+## Description in Medium
 
 ### [auto-load all stories in storybook by storybook-load](https://medium.com/@thundermiracle/auto-load-all-stories-in-storybook-by-storybook-loader-39f4a5b78d03)
+
+## Examples
+
+[./docs/stories/1. Examples](/docs/stories/1.%20Examples)
 
 ## Table of Contents
 
