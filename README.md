@@ -14,10 +14,6 @@ storybook-loader
 
 ### [auto-load all stories in storybook by storybook-load](https://medium.com/@thundermiracle/auto-load-all-stories-in-storybook-by-storybook-loader-39f4a5b78d03)
 
-## Examples
-
-[./docs/stories/1. Examples](/docs/stories/1.%20Examples)
-
 ## Table of Contents
 
 * [Description](#Description)
@@ -26,6 +22,7 @@ storybook-loader
   * [Steps of loading javascript component](#steps-of-loading-javascript-component)
   * [Steps of loading markdown](#steps-of-loading-markdown)
   * [Steps of loading javascript component with markdown](#Steps-of-loading-javascript-component-with-markdown)
+* [Examples](#Examples)
 * [Instructions](#Instructions)
   * [parameter](#parameter)
   * [options](#options)
@@ -224,6 +221,10 @@ When you not only like to load js components, but also show notes in control pan
     |-pattern1 (display folder2/pattern1.md in notes panel)
     |-pattern2 (display nothing in notes panel)
     ```
+
+## Examples
+
+[./docs/stories/1. Examples](/docs/stories/1.%20Examples)
 
 ## Instructions
 
